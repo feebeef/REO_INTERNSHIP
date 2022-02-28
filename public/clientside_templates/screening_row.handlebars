@@ -1,45 +1,4 @@
-<link href= '/css/screening.css'  rel='stylesheet' />
-
-<div class="card table-container">
-        <div class="card-content row"><div class="row">
-          <span class="x">Screening</span>
-          <a class="btn-floating btn-small waves-effect waves-light green modal-trigger" href="#proposal_modal" style="margin-top: -10px;" ><i class="material-icons">add</i></a>
-          <div class="btn"  style="margin-top: -5px; margin-left: 100px;">Update</div>   
-        </div>
-            <div class="card-tabs row" >
-                <ul class="tabs tabs-fixed-width col s12 ">
-                <li class="tab col s3 tb"><a href="#test4">Completed</a></li>
-                <li class="tab col s3 tb"><a class="active " href="#test5">On-going</a></li>
-                <li class="tab col s3 tb" ><a href="#test6">Pending</a></li>
-                <li class="tab col s3 tb"><a href="#test6">Withdrawn</a></li>
-                <div class="tab col s3 tb"></div>
-                <div class="tab col s3 tb"></div>
-                <div class="tab col s3 tb"></div>
-                <div class="tab col s3 tb"></div>
-                <div class="tab col s3 tb"></div>
-                <div class="tab col s3 tb"></div>
-                <div class="tab col s3 tb"></div>        
-                </ul>
-            </div> 
-          <div id="man">
-            <div class=" material-table">             
-              <table id="datatable">
-                <thead>
-                    <tr class = "table-tab row">
-                      <th style = "padding-top: 10px;"></th>
-                      <th style = "padding-top: 10px;"></th>
-                      <th> Proposal </th>
-                      <th class="hide-on-medium-small details">Details</th>
-                      <th class = "status">Status</th>
-                      <th class ="hide-on-medium-small">Recent Activity</th>
-                      <th class="hide-on-small-and-down"></th>
-                      <th class="hide-on-small-and-down"></th>
-                      <th style = "padding-top: 10px;"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                  {{#each data}}
-                    <tr class="data-row">
+                <tr class="data-row">
                       <td style=" padding-top: 10px;">
                           <form id = "screening_"{{proposal_id}} >
                           <span>
@@ -107,36 +66,4 @@
                   </td>
                   <td style="width: 5px;"> <a style="color: #8B83BA;"href="#!"><i class="material-icons">more_vert</i></a></td>
                   </form>
-              </tr>
-              {{/each}}
-              </tbody>
-            </table>
-              
-              <br>  
-              <ul class="pagination">
-                <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                <li class="active"><a href="#!">1</a></li>
-                <li class="waves-effect"><a href="#!">2</a></li>
-                <li class="waves-effect"><a href="#!">3</a></li>
-                <li class="waves-effect"><a href="#!">4</a></li>
-                <li class="waves-effect"><a href="#!">5</a></li>
-                <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-              </ul>
-              </div>
-            </div>
-    </div>
-</div>        
-    
-
-<script>
-    $('.sidenav').sidenav();
-    $('.tabs').tabs();
-    $('.tabs .tab a').css("font-family", "Inter");
-    $('.tabs .tab a').css("font-weight", "bold");
-    $('.btn-flat').css("font-family", "Inter");
-    $('.btn-flat').css("font-weight", "bold");
-    $('select').formSelect();
-</script>
-
-
-{{> proposal_form }}
+            </tr>

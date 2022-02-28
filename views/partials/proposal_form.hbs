@@ -2,7 +2,15 @@
   .autocomplete-content{
     top: 46px !important;
     max-height: 300px !important;
+
+    
 }
+
+.modal { max-height: 100% !important; 
+        overflow-y: auto;
+        max-width: 600px;
+      }
+
 </style>
 <div id="proposal_modal"  class = "modal row"  style="width: 80%;">
   <div class="modal-content card" style="padding-bottom: 20px;" >
@@ -56,7 +64,7 @@
                   <label for="college">College</label>
                 </div>
                 <div class="input-field col s4">
-                  <input placeholder="Proponent Center" id="center" type="text" class="validate autocomplete">
+                  <input placeholder="Proponent Center" id="center" type="text" class="validate autocomplete center">
                   <label for="center">Center</label>
                 </div> 
                 <div class="col col-btn">
@@ -85,6 +93,8 @@
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.runtime.js"></script>
+<script src="/clientside_templates/screening_row.precompiled.js"> </script>
 
 <script>
   $('.sidenav').sidenav();
@@ -98,6 +108,24 @@
   $('#proposal_modal').modal();
   $('.sidenav').sidenav();
   let proponent_row_counter = 1;
+
+  Handlebars.registerHelper('get_status',
+function (key) {
+   switch (key) {
+     case 1:
+       return "on-going"
+    case 2:
+       return "pending"
+    case 3:
+       return "completed"
+    case 4:
+       return "overdue"
+    case 0:
+      return "withdrawn"
+     default:
+       return "";
+   }
+});
 
 
 get_options("/api/options/category", 'input#category');
@@ -119,24 +147,19 @@ function get_options(route, el){
   }
 
   function get_value(route, el, el2, el3){
-    console.log("============================")
-        console.log(route)
-        console.log(el.val())
         if(el.val() != "" )
             $.get(route, function(payload, status){
             
                 if(payload != null){
-                    el2.val(payload[0]["college"]);
-                    el3.val(payload[0]["center"]);
-
-                    if(el2 != ""){
-                         el2.addClass("valid")
-                         el2.addClass("disabled");
+                    if(payload[0].hasOwnProperty('college')){
+                        el2.val(payload[0]["college"]);
+                        el2.addClass("valid")
+                        el2.prop("disabled", true);  
                     }
-                       
-                    if(el3 != ""){
+                    if(payload[0].hasOwnProperty('center')){
+                      el3.val(payload[0]["center"]);
                       el3.addClass("valid");
-                      el3.addClass("disabled")
+                      el3.prop("disabled", true);  
                     }
 
                     if(el3 == "" || payload[0]["center"] == null  )
@@ -147,6 +170,7 @@ function get_options(route, el){
   }
 
   $( 'input#name' ).change(function() {
+         $("#college").prop("disabled", false); $("#center").prop("disabled", false); 
         get_value("/api/options/proponent?name=" + $(this).val(), $(this), $("#college"), $("#center"))
   });
 
@@ -178,12 +202,15 @@ function get_options(route, el){
     $("#" + new_del_id).show();
 
     const x =  'input#name' + '_' + proponent_row_counter.toString();
-    console.log( $(x))
+    $("#college" +"_" + proponent_row_counter ).prop("disabled", false); 
+    $("#center"  +"_" + proponent_row_counter).prop("disabled", false); 
+   // console.log( $(x))
     $(x).change(function() {
-            console.log("OI")
+            $("#college" +"_" + proponent_row_counter ).prop("disabled", false); 
+            $("#center"  +"_" + proponent_row_counter).prop("disabled", false); 
             get_value("/api/options/proponent?name=" + $(this).val(), $(this), 
-            $('#college' +"_" + proponent_row_counter), 
-            $('#center' +"_" + proponent_row_counter))
+                      $('#college' +"_" + proponent_row_counter), 
+                      $('#center' +"_" + proponent_row_counter))
      });
   }
   function remove_proponent_form(el) {
@@ -192,16 +219,22 @@ function get_options(route, el){
     $(target).remove();
   }
 
-    $('#proposal_form').submit(function (e) {
+  $('#proposal_form').submit(function () {
+
+
+
+
       let category = $("#category").val();
       let ay = $("#AY").val();
       let term = $("#term").val();
-      let phreb = $("#phreb").val();
+      let phreb_category = $("#phreb").val();
       let college = $("#college").val();
       let center = $("#center").val();
       let ra = $("#ra").val();
       let title = $("#title").val();
       let proponents = [];
+
+ 
 
       $("#proponents_rows").children(".proponent_row").each( (i, el)=>{
             const name = $(el).children(".input-field").children(".name").val();
@@ -210,17 +243,40 @@ function get_options(route, el){
             proponents.push({name: name, college: college, center: center});
       });
 
-      $.post("/screening", { category: category, AY: ay, term: term, phreb: phreb, 
-                         college: college, center:center, ra:ra, title:title, proponents:proponents }).done(function( data ) {
-          //alert( "Data Loaded: " + data );
-           $.get("/screening");
-      });
+      const data = { category: category, AY: ay, term: term, phreb_category: phreb_category, 
+                    college: college, center:center, ra:ra, title:title, 
+                    proponents:proponents }
+     
+      $.post("/screening", data)
+        .done(function(res) {
+          Object.assign(data, res)
+          const template = Handlebars.templates.screening_row;
+          $("tbody").append(template(data));
+        })
+        .fail(function(res) {
+         // alert( "error" );
+        })
+        .always(function(res) {
+          //alert( "finished" );
+        });
 
-      return false;
-    });
+      return true;
+  });
+
 
   $( ".submit" ).click(function() {
-    console.log("submitting")
+    $("#proposal_form > .input-field").find("input[type=text]").each(function(){
+       if(!this.value)
+         $(this).val("none");
+     });
+
+    $(".proponent_row > .input-field").find("input[type=text]").each(function(){
+       if(!this.value)
+         $(this).val("none");
+     });
+
     $( "#proposal_form" ).submit();
   });
+
 </script>
+

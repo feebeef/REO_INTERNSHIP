@@ -71,9 +71,8 @@ async function insert_one_data(table_name, fields){
         //console.log(value)
         vals.push(value)
     })
-    qs += `) `; qs2 += `) `; qs +=  qs2; 
-    console.log(qs)
-    const results = await exec(qs, vals);
+    qs += `) `; qs2 += `) `; qs +=  qs2; //console.log(qs)
+    const results = await exec(qs, vals); //console.log(results)
     return results;
 }
 

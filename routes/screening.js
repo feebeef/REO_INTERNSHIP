@@ -29,27 +29,58 @@ function get_due_date(){
             (currentDate.getUTCDate())       + ' ' );
 }
 
+async function generate_protocol_code(category, ay, term, college){
+    const protocol_num =  await query2.manual_query(`SELECT COUNT(proposal_id) AS count FROM reo_db.proposal WHERE AY= ? ` +
+    ` AND term=? AND category=?`, [ay, term, category]).then(data=>{
+        return (('000' + data[0].count).substr(-3));
+    });
+    return ( category + "." +  protocol_num + "." + ay + ".T" + term + "." + college );
+}
+
 router.post("/",async(req, res)=>{
     const data = await req.body;
-    const num = await query2.manual_query(`SELECT COUNT(proposal_id) AS count FROM reo_db.proposal WHERE AY= ? ` +
-    ` AND term=? AND category=?`, [data.AY, data.term, data.category]);
+    const protocol_code = await generate_protocol_code(data.category, data.AY, data.term, data.proponents[0].college);
+    
+    //proposal
+    let proposal = {category: data.category, 
+                      AY: data.AY, 
+                      term:data.term, 
+                      phreb_category:data.phreb_category, 
+                      title: data.title, 
+                      protocol_code: protocol_code }
+    proposal.proposal_id = await query2.insert_one_data("proposal", proposal).then(newProposal => {return (newProposal)? newProposal.insertId: false} ); 
+    if(!proposal.proposal_id) return;
+    console.log(  proposal.proposal_id)
+    
+    //proponents
+    Array.from(data.proponents).forEach( async function p(proponent){
+        console.log(proponent.name)
+        console.log(proponent)
+        let proponent_id = await query2.get_all_data("proponent", {name: [proponent.name]})
+                                    .then(data=>{ console.log( data.length); return (data.length > 0) ? data[0].proponent_id: false; })
 
-    let protocol_code = data.category + "." +  ('000' + num[0].count).substr(-3) + "." + data.AY + ".T" + data.term + "." + data.proponents[0].college
-    await query2.insert_one_data("proposal", {category: req.body.category, AY: req.body.AY, term:req.body.term, preb_category:req.body.phreb, 
-                                        title: req.body.title, protocol_code: protocol_code });
-    
-    let proposal_id = await query2.manual_query(`SELECT MAX(proposal_id) as proposal_id FROM reo_db.proposal as proposal_id`); 
-        proposal_id = proposal_id[0].proposal_id; console.log(proposal_id);
-    
-    Array.from(data.proponents).forEach( async function p(p){
-        const proponent = await query2.get_all_data("proponent", {name: [p.name]});
-        const proponent_id = proponent[0].proponent_id;
-        await query2.insert_one_data("proposal_proponent", {proposal_id: proposal_id, proponent_id: proponent_id});  
+        if(!proponent_id)
+            proponent_id = await query2.insert_one_data("proponent", {name: proponent.name, college: proponent.college, center: proponent.center})
+                                 .then(newProponent=>{return newProponent.insertId});
+        
+                               
+        await query2.insert_one_data("proposal_proponent", {proposal_id: proposal.proposal_id, proponent_id: proponent_id});  
     })
 
-    //console.log(get_due_date()); console.log(data.ra)
-    const screening = await query2.insert_one_data("screening", {proposal_id: proposal_id, status: 1, assigned_user: data.ra.split("-")[1],  due_date: get_due_date()});   
-    res.status(200);
+    //screening
+    const due_date = get_due_date();
+    let screening = {proposal_id: proposal.proposal_id, 
+                     status: 1, 
+                     assigned_user: data.ra.split("-")[1],  
+                     due_date:due_date};
+
+    screening = await query2.insert_one_data("screening",screening).then(newScreening =>{
+                return (newScreening) ? {screening_id: newScreening.insertId, protocol_code: protocol_code,  due_date: due_date, status: screening.status}: false;
+                })
+    
+    if(!screening) res.status(400)
+    res.status(200).json(screening)
+
 })
 
 module.exports = router;

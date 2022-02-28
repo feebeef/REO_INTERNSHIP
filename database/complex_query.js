@@ -3,7 +3,7 @@ const exec = require("./execute_query");
 
 async function get_all_screening(filter=false){
     let qs = `SELECT  screening.screening_id, screening.proposal_id, status,due_date,
-                protocol_code, proposal.title, AY, term, category, preb_category, date_received, CONCAT(fn,' ',ln) as ra, 
+                protocol_code, proposal.title, AY, term, category, phreb_category, date_received, CONCAT(fn,' ',ln) as ra, 
                 JSON_ARRAYAGG(concat(proponent.name,"-" ,proponent.college, "-", proponent.center)) as proponents, comments
                 FROM screening
                 INNER JOIN proposal ON screening.proposal_id = proposal.proposal_id 
