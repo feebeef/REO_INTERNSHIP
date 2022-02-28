@@ -1,0 +1,51 @@
+
+
+    .tabs .indicator{
+        background-color:#25213B;/*your color*/
+    }
+
+    .tabs .tab a{
+        color:#8B83BA;
+        font-family: Inter;
+        font-size: 12px;
+    }
+
+    .tabs .tab a:focus, .tabs .tab a:focus.active { 
+        background-color: transparent;
+        outline: none;
+    }
+
+    .tabs .tab a:hover,.tabs .tab a.active {
+	    background-color:transparent;
+	    color:#25213B;
+        
+    }
+    .tabs .tab.disabled a,.tabs .tab.disabled a:hover {
+	    color:#8B83BA;	
+        font-family: Inter;
+    }
+
+    .tb{  
+        border-bottom: solid #8B83BA;
+    }
+
+    .x{
+        font-weight: bold;
+        letter-spacing: 10%;
+        font-size: medium;
+        font-size: 24px;
+        margin: 18px;
+        color: #8B83BA;
+        
+    }
+
+    .checkbox-blue-grey[type="checkbox"].filled-in:checked+span:not(.lever):after{
+     border: 2px solid #8B83BA;
+     background-color: #8B83BA;
+    }
+
+    .modal-info {
+      max-width: 100% !important;
+      max-height: 100% !important; 
+      overflow-y: auto;
+    } 

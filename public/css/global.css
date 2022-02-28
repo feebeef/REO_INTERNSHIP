@@ -1,0 +1,28 @@
+body, html, td {
+    font-family: "Inter";
+
+}
+
+body {
+    background-color: #F0F2FA;;
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+
+footer{
+    position:fixed;bottom:0;left:0;width:100%;
+}
+
+
+div.nav-wrapper{
+    background-color: white;
+    border: none;
+    box-shadow: none;
+}

@@ -1,0 +1,226 @@
+<style>
+  .autocomplete-content{
+    top: 46px !important;
+    max-height: 300px !important;
+}
+</style>
+<div id="proposal_modal"  class = "modal row"  style="width: 80%;">
+  <div class="modal-content card" style="padding-bottom: 20px;" >
+      <div class="row">
+          <form class="col s12" autocomplete="off" id="proposal_form">
+            <h6>Proposal Description</h6>
+            <div class="row">
+              <div class="input-field col s4">
+                <input placeholder="category" id="category" type="text" class="validate autocomplete">
+               <label for="category">Category</label>
+              </div>
+      
+              <div class="input-field col s4">
+                <input placeholder="AY" id="AY" type="text" class="validate">
+                <label for="AY">School  Year</label>
+              </div> 
+      
+              <div class="input-field col s4">
+                  <select id ="term">
+                    <option value="" disabled selected>TERM</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select>
+                  <label>Term</label>
+              </div>
+
+              <div class="input-field col s12">
+                <input placeholder="Study Title" id="title" type="text" class="validate">
+                <label for="title">Study Title</label>
+             </div>
+             <div class="input-field col s12">
+              <input placeholder="PHREB Category" id="phreb" type="text" class="validate autocomplete">
+              <label for="phreb">Phreb Category</label>
+            </div>
+            </div>
+         
+    
+          <h6> Proponents </h6>
+         
+
+          <div class="row">
+            <div id="proponents_rows">
+              <div class="proponent_row" id = "1">
+                <div class="input-field col s4">
+                  <input placeholder="Proponent Name" id="name" type="text" class="validate autocomplete name">
+                  <label for="name">Name</label>
+                </div>
+                <div class="input-field col s2">
+                  <input placeholder="College" id="college" type="text" class="validate autocomplete college">
+                  <label for="college">College</label>
+                </div>
+                <div class="input-field col s4">
+                  <input placeholder="Proponent Center" id="center" type="text" class="validate autocomplete">
+                  <label for="center">Center</label>
+                </div> 
+                <div class="col col-btn">
+                <div class="btn-floating flat small red" id="del_1" style="text-align: center;" 
+                onClick="remove_proponent_form(this)" target="1">
+                  <i class="material-icons " >remove</i>
+                </div>
+              </div>
+              </div>
+              <div class="btn-floating flat small green" onclick="add_proponent_form()" style="margin-left: -10px;">
+                <i class="material-icons">add</i>
+              </div> 
+            </div>
+            
+          </div>
+      
+              <div class="input-field col s12">
+                  <input placeholder="Research Assistant" id="ra" type="text" class="validate autocomplete">
+                  <label for="ra">Research Assistant</label>
+              </div>
+              <div class="btn col s12 green submit" value="submit">Submit</div>
+              
+    
+          </form>
+         </div>
+  </div>
+</div>
+
+
+<script>
+  $('.sidenav').sidenav();
+  $('.tabs').tabs();
+  $('.tabs .tab a').css("font-family", "Inter");
+  $('.tabs .tab a').css("font-weight", "bold");
+  $('.btn-flat').css("font-family", "Inter");
+  $('.btn-flat').css("font-weight", "bold");
+  $('select').formSelect();
+  $("#del_1").hide();
+  $('#proposal_modal').modal();
+  $('.sidenav').sidenav();
+  let proponent_row_counter = 1;
+
+
+get_options("/api/options/category", 'input#category');
+get_options("/api/options/preb_category", 'input#phreb');
+get_options("/api/options/proponent", 'input#name')
+get_options("/api/options/college", 'input#college');
+get_options("/api/options/center", 'input#center' );
+get_options("/api/options/ra", 'input#ra' );
+get_options("/api/options/ay", 'input#AY' );
+
+function get_options(route, el){
+    $.get(route, function(payload, status){
+        console.log(payload)
+       $(el).autocomplete({
+          data: payload,
+          minLength: 0
+       })
+    })
+  }
+
+  function get_value(route, el, el2, el3){
+    console.log("============================")
+        console.log(route)
+        console.log(el.val())
+        if(el.val() != "" )
+            $.get(route, function(payload, status){
+            
+                if(payload != null){
+                    el2.val(payload[0]["college"]);
+                    el3.val(payload[0]["center"]);
+
+                    if(el2 != ""){
+                         el2.addClass("valid")
+                         el2.addClass("disabled");
+                    }
+                       
+                    if(el3 != ""){
+                      el3.addClass("valid");
+                      el3.addClass("disabled")
+                    }
+
+                    if(el3 == "" || payload[0]["center"] == null  )
+                        el2.val("none")
+                }
+            
+            })
+  }
+
+  $( 'input#name' ).change(function() {
+        get_value("/api/options/proponent?name=" + $(this).val(), $(this), $("#college"), $("#center"))
+  });
+
+  function add_proponent_form() {
+    const proponents = $("#proponents_rows");
+    let proponent =  $("#1").clone(false);
+
+    proponent_row_counter += 1;
+    proponent = proponent.attr("id", proponent_row_counter.toString());
+    const new_del_id = "del_" + proponent_row_counter.toString();
+
+    proponent.children(".input-field").each( (i , el) =>{
+        const type =  $(el).children("input").attr("id");
+        const id = $(el).children("input").attr("id") + "_" + proponent_row_counter;
+        
+        $(el).children("input").val("")
+        $(el).children("input").attr("id", id);
+        $(el).children("input").removeClass("valid");
+        $(el).children("label").attr("for", id);
+    });
+
+    get_options("/api/options/proponent", 'input#name' +"_" + proponent_row_counter );
+    get_options("/api/options/college", 'input#college' +"_" + proponent_row_counter );
+    get_options("/api/options/center", 'input#center' +"_" + proponent_row_counter );
+
+    proponent.children(".col-btn").children("#del_1").attr("id", new_del_id);
+    proponent.children(".col-btn").children("#"+new_del_id).attr("target",  proponent_row_counter.toString());
+    proponents.append(proponent);
+    $("#" + new_del_id).show();
+
+    const x =  'input#name' + '_' + proponent_row_counter.toString();
+    console.log( $(x))
+    $(x).change(function() {
+            console.log("OI")
+            get_value("/api/options/proponent?name=" + $(this).val(), $(this), 
+            $('#college' +"_" + proponent_row_counter), 
+            $('#center' +"_" + proponent_row_counter))
+     });
+  }
+  function remove_proponent_form(el) {
+    console.log(el)
+    const target = "#"+ $(el).attr('target');
+    $(target).remove();
+  }
+
+    $('#proposal_form').submit(function (e) {
+      let category = $("#category").val();
+      let ay = $("#AY").val();
+      let term = $("#term").val();
+      let phreb = $("#phreb").val();
+      let college = $("#college").val();
+      let center = $("#center").val();
+      let ra = $("#ra").val();
+      let title = $("#title").val();
+      let proponents = [];
+
+      $("#proponents_rows").children(".proponent_row").each( (i, el)=>{
+            const name = $(el).children(".input-field").children(".name").val();
+            const college = $(el).children(".input-field").children(".college").val();
+            const center = $(el).children(".input-field").children(".center").val();
+            proponents.push({name: name, college: college, center: center});
+      });
+
+      $.post("/screening", { category: category, AY: ay, term: term, phreb: phreb, 
+                         college: college, center:center, ra:ra, title:title, proponents:proponents }).done(function( data ) {
+          //alert( "Data Loaded: " + data );
+           $.get("/screening");
+      });
+
+      return false;
+    });
+
+  $( ".submit" ).click(function() {
+    console.log("submitting")
+    $( "#proposal_form" ).submit();
+  });
+</script>
