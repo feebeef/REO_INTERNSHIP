@@ -1,0 +1,46 @@
+
+<div id="activity_modal"  class = "modal row"  style="width: 80%; height: 400px;">
+  <div class="modal-content" style="padding-bottom: 20px;" >
+      <div class="row">
+        <form class="col s12" autocomplete="off" id="" class ="activity_form" id="activity_form">
+            <div class="bro">
+
+
+            </div>
+          <div class="btn">Update</div>
+        </form>
+    </div>
+  </div>
+</div>
+<script src="/clientside_templates/update_status_row.precompiled.js"> </script>
+
+<script>
+//get_options("/api/options/activity", 'input.activity');
+
+
+$('.activity_form').submit(function () {
+        return true;
+});
+
+$( "#btn_activity_submit" ).click(function() {
+    $(".activity_form").submit();
+      
+})
+
+$( "#btn_update_status" ).click(function() {
+
+     $(".bro").empty()
+    $(".activity_checkbox").each(function(el) {
+        if($(this).is(":checked")){
+          console.log($(this).val());
+          console.log($(this).attr('id'));
+          const template = Handlebars.templates.update_status_row;
+          console.log(template)
+          $(".bro").append(template({screening_id: $(this).attr('id'), protocol_code:$(this).val()}));
+        }
+    });
+    $( "#activity_modal" ).modal();
+    get_options("/api/options/activity", 'input.yep');
+    M.Modal.getInstance($( "#activity_modal" )).open();
+});
+</script>

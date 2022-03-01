@@ -3,8 +3,10 @@
 <div class="card table-container">
         <div class="card-content row"><div class="row">
           <span class="x">Screening</span>
-          <a class="btn-floating btn-small waves-effect waves-light green modal-trigger" href="#proposal_modal" style="margin-top: -10px;" ><i class="material-icons">add</i></a>
-          <div class="btn"  style="margin-top: -5px; margin-left: 100px;">Update</div>   
+          <a class="btn-floating btn-small waves-effect waves-light green modal-trigger" href="#proposal_modal" style="margin-top: -10px;" >
+            <i class="material-icons">add</i>
+          </a>
+          <div id="btn_update_status" class="btn" style="margin-top: -5px; margin-left: 100px;">Update</div>   
         </div>
             <div class="card-tabs row" >
                 <ul class="tabs tabs-fixed-width col s12 ">
@@ -41,10 +43,10 @@
                   {{#each data}}
                     <tr class="data-row">
                       <td style=" padding-top: 10px;">
-                          <form id = "screening_"{{proposal_id}} >
+                          <form id = "screening_"{{screening_id}} >
                           <span>
                            <label>
-                              <input type="checkbox" class="filled-in checkbox-blue-grey"  />
+                              <input type="checkbox" class="filled-in checkbox-blue-grey activity_checkbox"  value="{{protocol_code}}" id={{screening_id}}/>
                           <span></span>
                           </label>
                            </span>
@@ -140,3 +142,5 @@
 
 
 {{> proposal_form }}
+
+{{> update_status_form }}
