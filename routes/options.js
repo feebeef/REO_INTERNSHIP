@@ -21,7 +21,7 @@ router.route('/ay').get(async(req, res, next)=>{
     res.json(vals);
 })
 
-router.route('/preb_category').get(async(req, res, next)=>{
+router.route('/phreb_category').get(async(req, res, next)=>{
     const result = await await query.get_all_data("options", {"type": ["phreb"]})
     let vals = {};
     result.forEach(res=>{ vals[res.display_text] = null; })

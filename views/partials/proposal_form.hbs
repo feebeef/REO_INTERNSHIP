@@ -97,19 +97,14 @@
 <script src="/clientside_templates/screening_row.precompiled.js"> </script>
 
 <script>
-  $('.sidenav').sidenav();
-  $('.tabs').tabs();
-  $('.tabs .tab a').css("font-family", "Inter");
-  $('.tabs .tab a').css("font-weight", "bold");
   $('.btn-flat').css("font-family", "Inter");
   $('.btn-flat').css("font-weight", "bold");
   $('select').formSelect();
   $("#del_1").hide();
   $('#proposal_modal').modal();
-  $('.sidenav').sidenav();
   let proponent_row_counter = 1;
 
-  Handlebars.registerHelper('get_status',
+Handlebars.registerHelper('get_status',
 function (key) {
    switch (key) {
      case 1:
@@ -127,24 +122,25 @@ function (key) {
    }
 });
 
-
-get_options("/api/options/category", 'input#category');
-get_options("/api/options/preb_category", 'input#phreb');
-get_options("/api/options/proponent", 'input#name')
-get_options("/api/options/college", 'input#college');
-get_options("/api/options/center", 'input#center' );
-get_options("/api/options/ra", 'input#ra' );
-get_options("/api/options/ay", 'input#AY' );
-
 function get_options(route, el){
     $.get(route, function(payload, status){
-        console.log(payload)
+       // console.log(payload)
        $(el).autocomplete({
           data: payload,
           minLength: 0
        })
     })
   }
+
+get_options("/api/options/category", 'input#category');
+get_options("/api/options/phreb_category", 'input#phreb');
+get_options("/api/options/proponent", 'input#name')
+get_options("/api/options/college", 'input#college');
+get_options("/api/options/center", 'input#center' );
+get_options("/api/options/ra", 'input#ra' );
+get_options("/api/options/ay", 'input#AY' );
+
+
 
   function get_value(route, el, el2, el3){
         if(el.val() != "" )
@@ -221,20 +217,14 @@ function get_options(route, el){
 
   $('#proposal_form').submit(function () {
 
-
-
-
       let category = $("#category").val();
       let ay = $("#AY").val();
       let term = $("#term").val();
       let phreb_category = $("#phreb").val();
-      let college = $("#college").val();
-      let center = $("#center").val();
       let ra = $("#ra").val();
       let title = $("#title").val();
       let proponents = [];
 
- 
 
       $("#proponents_rows").children(".proponent_row").each( (i, el)=>{
             const name = $(el).children(".input-field").children(".name").val();
@@ -243,24 +233,27 @@ function get_options(route, el){
             proponents.push({name: name, college: college, center: center});
       });
 
-      const data = { category: category, AY: ay, term: term, phreb_category: phreb_category, 
-                    college: college, center:center, ra:ra, title:title, 
+      const data = { category: category, AY: ay, term: term, 
+                    phreb_category: phreb_category, ra:ra, title:title, 
                     proponents:proponents }
+
+      //console.log(data)
      
       $.post("/screening", data)
         .done(function(res) {
-          Object.assign(data, res)
-          const template = Handlebars.templates.screening_row;
-          $("tbody").append(template(data));
+            data.ra = $("#ra").val().split("-")[0];
+            Object.assign(data, res)
+            const template = Handlebars.templates.screening_row;
+            $("tbody").append(template(data));
+             M.toast({html: 'Successfully Added to Screening', classes: 'rounded'});
         })
         .fail(function(res) {
-         // alert( "error" );
+            M.toast({html: 'error adding proposal to screening', classes: 'rounded'});
         })
         .always(function(res) {
-          //alert( "finished" );
+            M.Modal.getInstance($("#proposal_modal")).close();
         });
-
-      return true;
+      return false;
   });
 
 
@@ -276,6 +269,8 @@ function get_options(route, el){
      });
 
     $( "#proposal_form" ).submit();
+
+
   });
 
 </script>

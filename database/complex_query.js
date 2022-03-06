@@ -1,7 +1,8 @@
 
 const exec = require("./execute_query");
+/* queries here has multiple relationships with other tables */
 
-async function get_all_screening(filter=false){
+async function get_all_screening(filter=false, sort=false, page=false){
     let qs = `SELECT  screening.screening_id, screening.proposal_id, status,due_date,
                 protocol_code, proposal.title, AY, term, category, phreb_category, date_received, CONCAT(fn,' ',ln) as ra, 
                 JSON_ARRAYAGG(concat(proponent.name,"-" ,proponent.college, "-", proponent.center)) as proponents, comments
@@ -34,7 +35,24 @@ async function get_all_screening(filter=false){
             qs += `))`;
         })
     }
+
+    if(sort){
+        qs += ` ORDER BY `
+        Object.entries( sort ).forEach(([column, sort_type])=>{
+            if(qs[qs.length-1] !== ` `) qs += `,`
+                qs += ` ` + column; 
+            if(sort_type === "asc") qs += " asc"
+            else qs += " desc"
+        })
+    }
+
     qs += ` GROUP BY screening_id `;
+
+    if(page){
+        qs += ( ` LIMIT ` + page.count + ` ` + page.offset );
+    }
+
+
     results = await exec(qs);
 
      if(results){

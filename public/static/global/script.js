@@ -6,12 +6,5 @@ $(document).ready(function() {
     $('.btn-flat').css("font-family", "Inter");
     $('.btn-flat').css("font-weight", "bold");
     $('select').formSelect();
-    $(document).ready(function(){
-    $('.modal').modal();
-
-  });
-  $('.sidenav').sidenav();
-  
 });
    
-

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../global/materialize.min.js"></script>
+    <link rel="stylesheet" href="../global/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src ="script.js"></script>
+    <link href='style.css' rel='stylesheet' />
+</head>
+<body>
+ <div style="margin: 100px; width:fit-content">
+ <!-- Customizable input  -->
+  <form id="search-form" class="chips search-field ">
+    <input id="search-input" placeholder="Search" type="text" class="custom-class browser-default search-field"
+    name="q" value="" autocomplete="off" aria-label="Search box">
+ </form>
+
+
+</div>
+</body>
+</html>
+
+<script>
+var elems = document.querySelectorAll('.chips');
+const options = {};
+var instances = M.Chips.init(elems, options);
+
+$('.search-field:focus').css("border", "none")
+$('.search-form:focus').css("outline", "none")
+$('.search-field.active').css("border", "none")
+$('.search-form:active').css("outline", "none")
+</script>

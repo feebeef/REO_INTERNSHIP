@@ -1,0 +1,8 @@
+body {
+    background-color: #F0F2FA;;
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    
+}
+

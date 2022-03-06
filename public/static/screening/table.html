@@ -7,7 +7,6 @@
         <link rel="stylesheet"  href="materialize.min.css">
         <script src="materialize.min.js"></script>
         <link href= 'style.css'  rel='stylesheet' />
-     
         <script src="script.js"></script>
     </head>
     <body>
@@ -16,7 +15,18 @@
         <div class="card-content row"><div class="row">
           <span class="x">Screening</span>
           <a class="btn-floating btn-small waves-effect waves-light green modal-trigger" href="#modal1" style="margin-top: -10px;" ><i class="material-icons">add</i></a>
-          <div class="btn"  style="margin-top: -5px; margin-left: 100px;">Update</div>   
+          
+          
+          <div class="row">
+          <div class="btn col s1"  style="margin-top: -5px; margin-left: 100px;">Update</div>   
+          
+          <div class = "col s1" style="border: #C6C2DE 2px solid; width: fit-content; border-radius: 8px; " class="btn_filter_outline">
+              <div style="color: #25213B; padding-left: 0px; padding-right: 2px;" id="btn_filter" class="btn-flat">
+                <i style="color:#8B83BA; margin-right: 5px; " class="material-icons left">filter_alt</i>
+                Filter
+              </div>
+          </div>
+        </div>
         </div>
          
           
@@ -93,7 +103,7 @@
                         </div>
 
                         </div>
-
+                    
                      
                   </td>
                     <td class="details hide-on-medium-small" >
@@ -164,63 +174,10 @@
 
 </div>        
 
-
-<div id="slide-out" class="sidenav sidenav-fixed green ">
-    
-    <div class ="nav-logo center">   <i class=" material-icons white-text center">keyboard_arrow_left</i></div>
-    <!-- {{!-- <a  class="brand-logo" href="/">
-   
-     <img src="images/dlsu-white-logo.png">
-    </a> --}}
-
-{{!--              
-     
-      <div class="green-text text-lighten-5" style="padding-top: 0px; font-size: 9px; 
-      font-weight:bold; text-align: center; letter-spacing: 0.65px;
-    line-height: 10px;">RESEARCH ETHICS OFFICE</div> --}}
-
-    {{!-- <div class="divider green lighten-3"></div> --}} -->
-   
-
-    <ul class = "menu">
-    
-    <li class = "row">
-         <a class=" center col s12" href="#!">
-         <i class=" material-icons white-text center col s12"  style="">dashboard</i>
-         Dashboard
-        </a>
-
-     </li>
-    <li class = "row">
-        <a class="white-text center col s12 active" href="/screening">
-        <i class=" material-icons white-text  center col s12">description</i>
-        Screening</a>
-    </li>
-    <li class = "row">
-        <a class="white-text  center col s12"  href="#!">
-            <i class=" material-icons white-text center col s12" style="">bookmark</i>
-            Review</a>
-    </li>
-    <li class = "row">
-        <a class="white-text  center col s12" href="#!">
-        <i class=" material-icons white-text center col s12" style="">bar_chart</i>
-        Reports</a>
-    </li>
-    <li class = "row"><a class="white-text center col s12 " href="#!">
-        <i class=" material-icons white-text  center col s12" >person_outline</i>
-        Users</a></li>
-    
-    
-    </ul>
-</div>
-
-
 <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js"></script>
-<script>
-
-</script>
 
 
-    </body>
+
+</body>
 </html>
 

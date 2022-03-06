@@ -11,7 +11,10 @@ async function manual_query(qs, vals=null){
     return results;
 }
 
-async function get_all_data(table_name, filter=null, sort=null){
+//filter object = {column_name: [values]}
+//sort object = { asc:["column_name"], desc:["column_name"] }
+
+async function get_all_data(table_name, filter=null, sort=null, page=null){
     let qs = `SELECT * FROM ` + table_name + ` `;
     let results;
     let vals = [];
@@ -30,15 +33,35 @@ async function get_all_data(table_name, filter=null, sort=null){
             qs += `))`;
         })   
     }
+    //SELECT * FROM table ORDER BY col1 ASC, col4 DESC
+    if(sort){
+        
+        qs += ` ORDER BY `
+        Object.entries( sort ).forEach(([column, sort_type])=>{
+            if(qs[qs.length-1] !== ` `) qs += `,`
+                qs += ` ` + column; 
+            if(sort_type === "asc") qs += " asc"
+            else qs += " desc"
+        })
+    }
+
+    if(page){
+        qs += ( ` LIMIT ` + page.count + ` ` + page.offset );
+    }
     if(filter)
         results = await exec(qs,vals);
     else
         results = await exec(qs);
+
+
+    //console.log(results); console.log(qs)
      
     return results;
 
   }
-  
+  //get_all_data("proposal", {category: ["PHD"]}, {AY: "DESC", term: "ASC", title: "DESC"});
+
+
 
 
 async function update_data_fields(table_name, id, fields){
@@ -52,7 +75,8 @@ async function update_data_fields(table_name, id, fields){
     })
     qs += ` WHERE ` + table_name + `_id = ?`;
     vals.push(id);
-    return await exec(qs, vals);
+    const results = await exec(qs, vals);
+    return results;
 }
 
 

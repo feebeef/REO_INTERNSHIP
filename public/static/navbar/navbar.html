@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav bar</title>
+
+    <script src="../global/jquery-3.6.0.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet' />
+    <script src="../global/materialize.min.js"></script>
+    <link rel="stylesheet" href="../global/materialize.min.css">
+    <link href='../global/style.css' rel='stylesheet' />
+
+    <link href='style.css' rel='stylesheet' />
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <nav id="main_top_nav">
+        <div class="nav-wrapper">
+            <ul class="menu_left">
+                <li class="">
+                    <a href="#" data-target="main_side_nav" class="sidenav-trigger show-on-large">
+                        <i class="material-icons green-text">menu</i></a>
+                </li>
+
+            </ul>
+            <ul class="menu_right right">
+                <li style="padding: 0px;">
+                    <i class="material-icons teal-text" style="display: inline; position: absolute;
+                    right: 140px;">search</i>
+                  
+                    <form id="search-form" class="chips search-field" style="padding: 0px; position: absolute;
+                    right: 180px; top: 6px">
+                        <input id="search-input" placeholder="Search"  style="font-size: 14px"
+                        type="search" class="browser-default search-field"
+                        name="q" value="" autocomplete="off" aria-label="Search box"> 
+                        
+                    </form> 
+
+                    <div class="search-popup" id="search-popup-options">
+                        <div class="search-content">
+                            <label class="search-heading">Options</label>
+                            <ul id = "search-option-list" class="popup-list">
+
+                                <li class="search-option">
+                                    <div><a href ="#" data-href="/search/process">in: </a></div>
+                                </li>
+                                <li class="search-option">
+                                    <div><a data-href="/search/code">code: </a></div>
+                                </li>
+                                <li class="search-option">
+                                    <div><a data-href="/search/title">title: </a></div>
+                                </li>
+                                <li class="search-option">
+                                    <div><a data-href="/search/code">school year: </a></div>
+                                </li>
+                                <li class="search-option">
+                                    <div><a data-href="/search/category">category: </a></div>
+                                </li>
+                                <li class="search-option">
+                                    <div><a data-href="/search/prheb_category">phreb category: </a></div>
+                                </li>
+                                <li class="search-option">
+                                    <div><a data-href="/search/due_date">due date: </a></div>
+                                </li>
+                                <li class="">
+                                    <div><a data-href="/search/date_received">date received: </a></div>
+                                </li>
+                            </ul>
+
+                            <label class="search-heading">Recent Searches</label>
+                            <ul id="search-recent" class="popup-list">
+                                <li class="">
+                                    <div><a href="#">Example 1</a></div>
+                                </li>
+                                <li class="">
+                                    <div><a href="#">Example 2 </a></div>
+                                </li>
+                                <li class="">
+                                    <div><a href="#">Example 3 </a></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="search-popup"  id="search-popup-results">
+                        <div class="search-content">
+                            <label class="search-heading">Results</label>
+                            <ul id = "search-option-list" class="popup-list">
+                                <li class="search-option">
+                                    <div><a data-href="/search/title">title: lololol</a></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="search-hide"><a href="!#" class="btn-floating btn-small btn-nav green lighten-5">
+                        <i class="material-icons green-text text-lighten-2">person</i>
+                    </a>
+                </li>
+                <li><a class="btn-floating btn-small btn-nav green lighten-5" href="!#">
+                        <i class="material-icons green-text text-lighten-2">notifications</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+    </nav>
+
+
+    <div id="main_side_nav" class="sidenav sidenav-fixed right green ">
+        <ul class="menu">
+            <li class="row">
+                <a class=" center col s12" href="#!">
+                    <i class=" material-icons white-text center col s12">dashboard</i>
+                    Dashboard
+                </a>
+            </li>
+            <li class="row">
+                <a class="white-text center col s12" href="/screening">
+                    <i class=" material-icons white-text center col s12">article</i>
+                    Proposals</a>
+            </li>
+            <li class="row">
+                <a class="white-text center col s12 active" href="/screening">
+                    <i class=" material-icons white-text center col s12">folder</i>
+                    Screening</a>
+            </li>
+            <li class="row">
+                <a class="white-text  center col s12" href="#!">
+                    <i class=" material-icons white-text center col s12">bookmarks</i>
+                    Review</a>
+            </li>
+            <li class="row">
+                <a class="white-text  center col s12" href="#!">
+                    <i class=" material-icons white-text center col s12">bar_chart</i>
+                    Reports</a>
+            </li>
+            <li class="row"><a class="white-text center col s12 " href="#!">
+                    <i class=" material-icons white-text  center col s12">person_outline</i>
+                    Users</a></li>
+        </ul>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var elems = document.querySelectorAll('.chips');
+    const options = {};
+    var instances = M.Chips.init(elems, options);
+
+</script>
