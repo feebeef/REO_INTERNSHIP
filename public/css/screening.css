@@ -89,11 +89,12 @@ overflow-y: auto;
 } 
 
 
-tr.table-tab > th{
-    background-color: #F4F2FF; 
+tr.table-header > th{
+
     color: #6E6893;
     letter-spacing: 0.05em; font-weight: 600; 
     font-size: 12px;
+    
 }
 
 tr.data-row > td.details > div{
@@ -253,9 +254,12 @@ td, td.status{
 
 .proposal{
     vertical-align: text-top;
+  
 }
 
-
+table > thead{
+    background-color: #F4F2FF;
+}
 
 .status-type.overdue{
     color: red;
@@ -468,3 +472,16 @@ td.recent-activity{
     }
 
 }
+
+
+.autocomplete-content{
+    top: 46px !important;
+    max-height: 300px !important;
+
+    
+}
+
+.modal { max-height: 100% !important; 
+        overflow-y: auto;
+        max-width: 600px;
+      }

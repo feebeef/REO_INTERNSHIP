@@ -1,3 +1,87 @@
+.status-type.overdue{
+  color: red;
+  background: #FFE0E0;
+}
+
+.status-type.overdue > .circle{
+  background-color: red;
+}
+
+.status-type.pending{
+  color: #CE8500;
+  background-color: #FFECCC;
+  
+}
+
+.status-type.pending > .circle{
+  background-color: #CE8500;
+}
+
+
+.status-type.on-going{
+  color: #4A4AFF;
+  background-color: #E6E6F2;
+
+}
+
+.status-type.on-going > .circle{
+  background-color: #4A4AFF;
+}
+
+.status-type.completed{
+  color: green;
+  background-color: #CDFFCD;
+}
+
+.status-type.completed > .circle{
+  background-color: green;
+}
+
+.status-type .withdrawn{
+  color: #6E6893;
+  background-color: #F2F0F9;
+}
+
+.circle .withdrawn{
+  background-color: #6E6893;
+}
+
+div.status > .status-type > .circle {
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+div.status > .status-type {
+  width: 100px;
+ height: 24px;
+ font-weight: bold;
+  /* border-radius: 50%; */
+  font-size: 12px;
+
+  padding-left: 10px;
+  padding-top: 3px;
+  font-family: Inter;
+
+  border-radius: 30px 30px 30px 30px;
+  outline-style: round;
+}
+
+
+.due_date{
+  font-size: 11px;
+  color: #25213B;
+ font-weight: bold;
+}
+.assigned_ra > a {
+  font-weight: bold;
+  font-size: 12px;
+  font-family: Inter;
+  color: #4A4AFF;
+}
+
+
 #main_side_nav {
   width: 84px;
   overflow-y: auto;
@@ -75,7 +159,7 @@
     border-radius: 5px;  */
     height: 50px;
     max-width: 400px;
-    overflow-x: scroll;
+    overflow-x: auto;
     
 }
 
@@ -124,7 +208,6 @@ form.search-field {
     width: 20px;
  }
 
-
 .search-content {
   color: #303c42;
   width: 90%;
@@ -151,13 +234,10 @@ form.search-field {
   transition: width 0.2s, top 0.2s ease-in-out;
   border-radius: 2px;
   background-color: #fff;
-}
-
-.search-popup {
   width: 400px;
-  
-}
 
+  z-index: 2;
+}
 
 nav ul.popup-list a:hover {
     background-color: initial;
@@ -175,32 +255,59 @@ nav ul.popup-list a:hover {
     background-color: #f7f7f7;
   }
 
-  
+  .side-content-wrapper{
+    position: fixed;
+    top: 0px;
+  }
 
 @media (min-width:360px)  { 
 
 }
 @media (min-width:481px)  { 
-    /* body{
-        background-color: aquamarine;
-    } */
-    input.search-field:focus {
-        outline: none;
-        color: #212121;
+    body{
+        /* background-color: aquamarine; */
+    }
+    #search-form {
+      max-width: 50%;
+      outline: none;
+      color: #212121;
+      top: 56px;
+    }
+
+    .side-content-wrapper{
+      max-width: 100%;
+      margin-top: -10px;
+    }
+
+    .search-popup{
+      top: 56px;
+      right: 0;
+      width: 100%;
+    }
     
-      }
-    
+
 
  }
 @media (min-width:600px)  { 
-    /* body{
-        background-color: #4A4AFF;
-    } */
+    body{
+        /* background-color: #4A4AFF; */
+    }
+
+    #search-form {
+      max-width: 400px;
+      outline: none;
+      color: #212121;
+    }
 
     input.search-field:focus {
         outline: none;
         color: #212121;
       
+    }
+
+    .search-popup{
+      width: 400px;
+      right:180px;
     }
 
 }
@@ -217,11 +324,19 @@ nav ul.popup-list a:hover {
         width:400px
     } */
 
+    
+
+
 }
 @media (min-width:1025px) { 
-    /* body{
-        background-color: #8B83BA;
-    } */
+    body{
+        /* background-color: #8B83BA; */
+    }
+
+    .search-popup{
+      width: 400px;
+      right:180px;
+    }
 
  }
 
@@ -230,11 +345,43 @@ nav ul.popup-list a:hover {
 
 @media (min-width: 1200px) { 
 
-    /* body{
-        background-color:green;
-    } */
+    body{
+        /* background-color:green; */
+    }
+    .search-popup{
+      width: 400px;
+      right:180px;
+    }
 
 }
 
+
+.search-result-wrapper{
+  height: 100%; overflow-y: auto; 
+  width: 600px; position: fixed; 
+  right: 0px; background-color:white;
+   z-index: 1; 
+   top: 64px; 
+   padding: 0px;
+   
+}
+
+
+.search-result-wrapper > div > ul{
+  border: #F4F2FF;
+}
+.collection-item.search-result-item{
+  background-color: white; 
+  margin-bottom: 10px;
+  max-height: 100px;
+  overflow: auto;
+}
+
+
+.search-result-header{
+  padding-left: 10px; 
+                    font-size: 12px; background-color: #F4F2FF; font-weight: 600; color: #6E6893;
+                    letter-spacing: 0.55px; height: 42px; vertical-align: middle; padding: 12px; border-radius: 5px;
+}
 
 

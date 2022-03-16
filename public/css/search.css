@@ -1,0 +1,90 @@
+header{
+    display:flex;
+    justify-content: center;
+    color:#4BD686;
+}
+form{
+    padding:10px;
+}
+div.d0{    
+    display:flex;
+    justify-content: center;
+}
+div.d1{
+    font-size:12pt;
+    color:rgb(164, 164, 164);
+    float: left;
+    padding: 10px;
+}
+.input-box{
+    position:absolute;
+    top: 59.375%;
+    left: 25%;
+    margin:10px 0;
+    width: 75%;
+}
+.input-box > input{
+    background:transparent;
+    border-radius: 30px;
+    border: 1px solid #4BD686;
+    padding:10px 0px 10px 50px;
+    font-size:14pt;
+    width:37.5%;
+}
+
+.logoo{
+    position:absolute;
+    top: 31.25%;
+    right: 50%;
+    width: 100%;
+}
+.imgs{
+    position:absolute;
+    right: 25%;
+    width: 100%;
+}
+.fa-search {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    margin: 0;
+}
+input::placeholder{
+    color:transparent;
+}
+input:placeholder-shown + label{
+    color:#aaa;
+    font-size:14pt;
+    top:15px;
+
+}
+input:focus + label, label{
+    color:#4BD686;
+    font-size:10pt;
+    pointer-events: none;
+    position: absolute;
+    left:0px;
+    top:0px;
+    transition: all 0.2s ease ;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+}
+
+input:focus, input:not(:placeholder-shown){
+    border-bottom: solid 1px #8aa1a1;
+    outline:none;
+}
+input[type=submit]{
+    position: absolute;
+    left: 25%;
+    background-color: #4BD686;
+    border:none;
+    color:white;
+    border-radius: 5px;
+    width:12.5%;
+    height:35px;
+    font-size: 14pt;
+    margin-top:20px;
+    
+}

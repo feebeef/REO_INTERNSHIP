@@ -12,6 +12,8 @@
     <script src="../global/materialize.min.js"></script>
     <link rel="stylesheet" href="../global/materialize.min.css">
     <link href='../global/style.css' rel='stylesheet' />
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.runtime.js"></script>
+    <script src="search_popuplist.precompiled.js"></script>
 
     <link href='style.css' rel='stylesheet' />
     <script src="script.js"></script>
@@ -61,13 +63,13 @@
                                     <div><a data-href="/search/category">category: </a></div>
                                 </li>
                                 <li class="search-option">
-                                    <div><a data-href="/search/prheb_category">phreb category: </a></div>
+                                    <div><a data-href="/search/prheb_category">phreb: </a></div>
                                 </li>
                                 <li class="search-option">
-                                    <div><a data-href="/search/due_date">due date: </a></div>
+                                    <div><a data-href="/search/due_date">due_date: </a></div>
                                 </li>
                                 <li class="">
-                                    <div><a data-href="/search/date_received">date received: </a></div>
+                                    <div><a data-href="/search/date_received">date_received: </a></div>
                                 </li>
                             </ul>
 
@@ -86,13 +88,11 @@
                         </div>
                     </div>
 
-                    <div class="search-popup"  id="search-popup-results">
+                    <div class="search-popup"  id="search-popup-suggestions">
                         <div class="search-content">
-                            <label class="search-heading">Results</label>
-                            <ul id = "search-option-list" class="popup-list">
-                                <li class="search-option">
-                                    <div><a data-href="/search/title">title: lololol</a></div>
-                                </li>
+                            <label class="search-heading">Suggestions</label>
+                            <ul id = "search-suggestion-list" class="popup-list">
+                                
                             </ul>
                         </div>
                     </div>
@@ -146,13 +146,101 @@
                     Users</a></li>
         </ul>
     </div>
+    <style>
+
+    </style>
+
+    <div class="side-content-wrapper search-result-wrapper" style="background-color: white;">
+        <div class="search-result-status" style="height: 64px; background-color: white; color: #3EB26D; margin-top: 10px; 
+        padding: 18px; font-size: 14px; font-weight: 500; letter-spacing: 0.45px;" >
+            Searching
+            <div class="progress progress-search">
+                <div class="indeterminate"></div>
+            </div>
+        </div>
+
+        
+        <div id="search-results row" style="padding: 15px;">
+            <ul class="collection">
+                <li class="collection-header search-result-header">
+    Results in screening
+</li>
+<li class="collection-item search-result-item proposal" >
+    <div class="row">
+        <a href="!#" style="padding-top: 0px !important; text-align: start; color: #4A4AFF; font-weight: bold;">
+            <!-- {{ code }} -->
+            DLSU-FRP.001.2018-2019.T2.GCOE
+        </a> 
+        <a class="secondary-content" style="color: #8B83BA;"href="#!"><i class="material-icons">more_vert</i></a>
+        <div class="status right" >
+            <div class="status-type on-going">
+                <span class = "circle on-going"></span>
+               on-going
+            </div>
+        </div>
+        <div class="due_date">due 15/APR/2019</div>
+        <div class="assigned_ra">
+            <label style="font-size: 10px; color:#6E6893; font-weight: bold;">Assigned to</label>
+          <a href = "!#" style="font-weight: bold">Phoebe Chen</a>
+        </div>
+        <br>
+        <!-- {{ title}} -->
+        Attitudes Towards Cause-Marketing in Two Emerging Markets-India and Philippines: The Role of Corporate Social Responsibility, Time Orientation and Company Origin
+        Attitudes Towards Cause-Marketing in Two Emerging Markets-India and Philippines: The Role of Corporate Social Responsibility, Time Orientation and Company Origin
+        Attitudes Towards Cause-Marketing in Two Emerging Markets-India and Philippines: The Role of Corporate Social Responsibility, Time Orientation and Company Origin
+        <div class="proponent-proposal" >
+          <br>
+          <label style="font-size: 10px; color:#6E6893; font-weight: bold;">Proponents </label>
+          <div><b>Dr. Bernadas</b> (CLA, Electronics and Communications Engineering)</div>
+          <div><b>Dr. Bernadas</b> (CLA, Electronics and Communications Engineering)</div>
+          <div><b>Dr. Bernadas</b> (CLA, Electronics and Communications Engineering)</div>
+      </div> 
+    </div>
+    
+    <li class="collection-header search-result-header">
+        Results in Review
+    </li>
+    <li class="collection-item search-result-item proposal" >
+        <div class="row">
+            <a href="!#" style="padding-top: 0px !important; text-align: start; color: #4A4AFF; font-weight: bold;">
+                <!-- {{ code }} -->
+                DLSU-FRP.001.2018-2019.T2.GCOE
+            </a> 
+            <a class="secondary-content" style="color: #8B83BA;"href="#!"><i class="material-icons">more_vert</i></a>
+            <div class="status right" >
+                <div class="status-type on-going">
+                    <span class = "circle on-going"></span>
+                   on-going
+                </div>
+            </div>
+            <div class="due_date">due 15/APR/2019</div>
+            <div class="assigned_ra">
+                <label style="font-size: 10px; color:#6E6893; font-weight: bold;">Assigned to</label>
+              <a href = "!#" style="font-weight: bold">Phoebe Chen</a>
+            </div>
+            <br>
+            <!-- {{ title}} -->
+            Attitudes Towards Cause-Marketing in Two Emerging Markets-India and Philippines: The Role of Corporate Social Responsibility, Time Orientation and Company Origin
+            Attitudes Towards Cause-Marketing in Two Emerging Markets-India and Philippines: The Role of Corporate Social Responsibility, Time Orientation and Company Origin
+            Attitudes Towards Cause-Marketing in Two Emerging Markets-India and Philippines: The Role of Corporate Social Responsibility, Time Orientation and Company Origin
+            <div class="proponent-proposal" >
+              <br>
+              <label style="font-size: 10px; color:#6E6893; font-weight: bold;">Proponents </label>
+              <div><b>Dr. Bernadas</b> (CLA, Electronics and Communications Engineering)</div>
+              <div><b>Dr. Bernadas</b> (CLA, Electronics and Communications Engineering)</div>
+              <div><b>Dr. Bernadas</b> (CLA, Electronics and Communications Engineering)</div>
+          </div> 
+        </div>
+</li>
+
+            </ul>
+        </div>
+    </div>
 </body>
 
 </html>
 
 <script>
-    var elems = document.querySelectorAll('.chips');
-    const options = {};
-    var instances = M.Chips.init(elems, options);
 
 </script>
+

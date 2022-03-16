@@ -1,0 +1,50 @@
+<script>
+    let total_pages = {{total_pages}}
+
+    M.Tabs.init($(".tabs"), {
+        onShow: (e)=>{
+              console.log(e.id)
+        }
+    });
+
+    $('#pagination').materializePagination({
+        align: 'center',
+        lastPage:  total_pages,
+        firstPage:  1,
+        urlParameter: 'page',
+        useUrlParameter: false,
+        onClickCallback: change_page
+    }); 
+    $("#datatable").show();
+
+
+function next_page(){
+
+}
+
+function tab_change(tab_target){
+    let status = tab_target.id;
+    let page_limit = $("#select_row_limit").val();
+    let current_page;
+    
+}
+
+function render_response_data(payload, status){
+     const template = Handlebars.templates.screening_row;
+      payload.forEach(data =>{
+          $("tbody#" + status).append(template(data));
+      })
+}
+
+function request_screening_data(page, filter){
+    
+    let request =  "/screening/api?" 
+               + "page=" + page.current_page + "&"
+               + "page_limit=" + page.page_limit + "&"
+               + "status=" + filter.status;
+    
+    $.get(request, render_response_data).then()
+
+}
+
+</script>

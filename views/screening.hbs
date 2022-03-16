@@ -1,157 +1,71 @@
+<script src="/js/materialize-pagination.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.runtime.js"></script>
+<script src="/clientside_templates/screening_row.precompiled.js"></script>
 <link href= '/css/screening.css'  rel='stylesheet' />
+<script src="/js/screening.js"> </script>
+
+<style>
+   .input-field > #screening_search{
+     border: none;
+     outline: none;
+   }
+
+    .input-field >  #screening_search:active,  .input-field >  #screening_search:focus{
+     border: none !important;
+     outline: none !important;
+   }
+</style>
 
 <div class="card table-container">
-        <div class="card-content row"><div class="row">
-          <span class="x">Screening</span>
-          <a class="btn-floating btn-small waves-effect waves-light green modal-trigger" href="#proposal_modal" style="margin-top: -10px;" >
-            <i class="material-icons">add</i>
-          </a>
-          <div id="btn_update_status" class="btn" style="margin-top: -5px; margin-left: 100px;">Update</div>   
-        </div>
-            <div class="card-tabs row" >
-                <ul class="tabs tabs-fixed-width col s12 ">
-                <li class="tab col s3 tb"><a href="#completed">Completed</a></li>
-                <li class="tab col s3 tb"><a class="active " href="#on-going">On-going</a></li>
-                <li class="tab col s3 tb" ><a href="#pending">Pending</a></li>
-                <li class="tab col s3 tb"><a href="#withdrawn">Withdrawn</a></li>
-                <div class="tab col s3 tb"></div>
-                <div class="tab col s3 tb"></div>
-                <div class="tab col s3 tb"></div>
-                <div class="tab col s3 tb"></div>
-                <div class="tab col s3 tb"></div>
-                <div class="tab col s3 tb"></div>
-                <div class="tab col s3 tb"></div>        
-                </ul>
-            </div> 
-          <div id="man">
-            <div class=" material-table">             
-              <table id="datatable">
-                <thead>
-                    <tr class = "table-tab row">
-                      <th style = "padding-top: 10px;"></th>
-                      <th style = "padding-top: 10px;"></th>
-                      <th> Proposal </th>
-                      <th class="hide-on-medium-small details">Details</th>
-                      <th class = "status">Status</th>
-                      <th class ="hide-on-medium-small">Recent Activity</th>
-                      <th class="hide-on-small-and-down"></th>
-                      <th class="hide-on-small-and-down"></th>
-                      <th style = "padding-top: 10px;"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                  {{#each data}}
-                    <tr class="data-row">
-                      <td style=" padding-top: 10px;">
-                          <form id = "screening_"{{screening_id}} >
-                          <span>
-                           <label>
-                              <input type="checkbox" class="filled-in checkbox-blue-grey activity_checkbox"  value="{{protocol_code}}" id={{screening_id}}/>
-                          <span></span>
-                          </label>
-                           </span>
-                          </form>
-                      </td>
-                  <td> <a style="color: #8B83BA;" href="#!"><i class="material-icons">chevron_right</i></a></td>
-                  
-                  <td class="proposal">   
-                      <div class="test" style="overflow-wrap: break-word; word-wrap: break-word;">
-                          <a href="!#" style="padding-top: 0px !important; margin-top: -10px; text-align: start; color: #4A4AFF; font-weight: bold; font-size: 12px;">
-                          {{ protocol_code }}
-                          </a> 
-                          <br>
-                          {{ title}}
-                          <br>
+    <div class="card-content row">
+      <div class="row">
+        <span class="x">Screening</span>
+        <a class="btn-floating btn-small waves-effect waves-light green modal-trigger" href="#proposal_modal" style="margin-top: -10px;" >
+          <i class="material-icons">add</i>
+        </a>
+      </div>
 
-                          <div class="proponent-proposal hide-on-large-medium" >
-                            <label style="font-size: 10px; color:#6E6893; font-weight: bold;">Proponents </label>
-                            {{#each proponents}}
-                            <div><b>{{name}}</b> ({{#if college}} {{college}} {{/if}} {{#if center}}, {{center}} {{/if}} )</div>
-                            {{/each}}
-                        </div>
-                      </div>
-                  </td>
-                  <td class="details hide-on-medium-small" >
-                    <div class="test">
-                      {{category}}<br>
-                       AY {{AY}}, T{{term}}<br>
-                      {{phreb_category}} <br>
-                      <div class = "proponents">
-                      {{#each proponents}}
-                      <div><b>{{name}}</b> ({{#if college}} {{college}} {{/if}} {{#if center}}, {{center}} {{/if}} )</div>
-                      {{/each}}
-                      </div>
-                    </div>
-                  </td>
-                  <td class = "status" style="width: auto; min-width: 125px; max-width: 120px;">
-                    
-                 
-                    <div class="status-type {{#get_status status}}{{/get_status}}"> 
-                      <span class = "circle  {{#get_status status}}{{/get_status}}"></span>
-                      {{#get_status status}}
-                      {{/get_status}}
-                    </div>
+      <div class="card-tabs row" >
+        <ul class="screening-tabs tabs  ">
+          <li class="tab col s2 tb"><a href="#completed-table-content">Completed</a></li>
+          <li class="tab col s2 tb"><a class="active " href="#on-going-table-content">On-going</a></li>
+          <li class="tab col s2 tb" ><a href="#pending-table-content">Pending</a></li>
+          <li class="tab col s2 tb"><a href="#withdrawn-table-content">Withdrawn</a></li>
+          <li class="tab col s2 tb"></li>
+          <li class="tab col s2 tb"></li>
+          <li class="tab col s2 tb"></li>
+        </ul>
+      </div>
+      {{> screening/filter}}
 
+      <div class="material-table">                        
+      
+          <table>
+          <thead>
+            <tr class = "table-header">
+              <th style = "padding-top: 10px;">Action</th>
+              <th style = "padding-top: 10px;"></th>
+              <th> Proposal </th>
+              <th class="hide-on-medium-small details">Details</th>
+              <th class = "status">Status</th>
+              <th class ="hide-on-medium-small">Recent Activity</th>
+              <th class="hide-on-small-and-down"></th>
+              <th class="hide-on-small-and-down"></th>
+              <th style = "padding-top: 10px;"></th>
+            </tr>
+          </thead>
+          </table>
+            <table class="datatable" >
+          <tbody id="on-going-table-content"></tbody>
+          <tbody id="completed-table-content"></tbody>
+          <tbody id="pending-table-content"></tbody>
+          <tbody id="withdrawn-table-content"></tbody>
+        </table>
 
-    
-                    <div class="due_date">due {{due_date}}</div>
-                    <div class="assigned_ra"><label style="font-size: 10px; color:#6E6893; font-weight: bold;">Assigned to</label> <br>
-                      <a href = "!#" style="font-weight: bold">{{ra}}</a>
-                    </div>
-                  </td>
-                  <td class ="hide-on-medium-small recent_activity" style="width: auto; min-width: 212px; max-width: 300px;">
-                    {{!-- <div class = "activity">{{activity}}</div> --}}
-                    <p class ="comments">{{comments}}</p>
-                  <td>
-                  <td class="hide-on-medium-small action-row" style="font-size: 12px; align-items: center;">
-                    <a href="!#" class="btn-flat" style="color: #6E6893; text-align: center; font-weight: bold; font-size: 12px; padding-top: 30px;">
-                    View More<i class="material-icons"></i></a>
-                  </td>
-                  <td style="width: 5px;"> <a style="color: #8B83BA;"href="#!"><i class="material-icons">more_vert</i></a></td>
-                  </form>
-              </tr>
-              {{/each}}
-              </tbody>
-            </table>
-              
-              <br>  
-              <ul class="pagination">
-                <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                <li class="active"><a href="#!">1</a></li>
-                <li class="waves-effect"><a href="#!">2</a></li>
-                <li class="waves-effect"><a href="#!">3</a></li>
-                <li class="waves-effect"><a href="#!">4</a></li>
-                <li class="waves-effect"><a href="#!">5</a></li>
-                <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-              </ul>
-              </div>
-            </div>
+      </div>
     </div>
-</div>        
-    
+</div>
 
-<script>
-    $('.sidenav').sidenav();
-    $('.tabs').tabs();
-    $('.tabs .tab a').css("font-family", "Inter");
-    $('.tabs .tab a').css("font-weight", "bold");
-    $('.btn-flat').css("font-family", "Inter");
-    $('.btn-flat').css("font-weight", "bold");
-    $('select').formSelect();
-</script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.runtime.js"></script>
-<script src="/clientside_templates/screening_row.precompiled.js"> </script>
-
-
-{{> proposal_form }}
-
-{{> update_status_form }}
-
-
-<script>
-  
-    
-</script>
+{{> screening/proposal_form }}
+{{> screening/application_checklist}}
 

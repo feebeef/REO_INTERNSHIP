@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('.sidenav').sidenav();
+
     $('.tabs').tabs();
     $('.tabs .tab a').css("font-family", "Inter");
     $('.tabs .tab a').css("font-weight", "bold");

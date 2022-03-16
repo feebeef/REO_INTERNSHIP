@@ -6,3 +6,33 @@ body {
     
 }
 
+/* custom scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+    max-height: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: white;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #E6E6F2;
+    background-clip: content-box;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #25213B;
+  }
+
+  
+.progress-search {
+  
+  background-color: rgba(62, 178, 108, 0.34);
+}
+
+
+.progress-search .indeterminate {
+  background-color: #3EB26D;
+}

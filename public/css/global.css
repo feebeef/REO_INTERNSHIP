@@ -26,3 +26,13 @@ div.nav-wrapper{
     border: none;
     box-shadow: none;
 }
+
+
+.progress-search {
+  
+    background-color: rgba(62, 178, 108, 0.34);
+  }
+  
+.progress-search .indeterminate {
+    background-color: #3EB26D;
+}

@@ -1,0 +1,126 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, height=device-height, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
+        <style type="text/css">
+            .counter{
+                margin-top: 10px;
+                margin-left: 30px;
+                list-style-type: none;
+                list-style-position: inside;
+                counter-reset:item 0;
+                
+            }
+            .counter > li{
+                counter-increment: item 1;
+                /* border-left: 2px rgb(164, 164, 164);
+                border-right: 0px;
+                border-top: 0px;
+                border-bottom: 0px;
+                border-style: solid; */
+                /* failed to implement the vertical lines.. */
+            }
+            .counter > li:before{
+                content:counter(item);
+                margin-top: 5px;
+                margin-right: 10px;
+                width:30px;
+                height:30px;
+                line-height: 30px;
+                background: #4BD686;;
+                border-radius: 100%;
+                color:white;
+                text-align: center;
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <header>
+            <h2>Student Portal</h2>
+        </header>
+
+        <div class="d0">
+            <div class="d1">Home</div>
+            <div class="d1">|</div>
+            <div class="d1">Contact Us</div>
+        </div>
+
+        <div id="signout">Log-out</div>
+
+        <div class="forcenter">
+            <div class="found">
+                <div class="imgs">
+                    <img
+                    src="transfer.png"
+                    />
+                </div>
+                
+                <div class="message">
+                    <div>
+                        <div class="horray">Horray! We have found</div>
+                        <div class="horray">your document.</div>
+                    </div>
+                    <div>
+                        <div class="dnum">document 3213432132423132</div>
+                    </div>
+                
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="process">
+            <ol class="counter">
+                <li>
+                
+                    <div class ="upReceived">
+                        <div class="rStatus">Proposal Received</div>
+                        <div class="rDatetime">11/12/2021 8:00 am</div>
+                    </div>
+
+                    <div class = "rComment">
+                        Upon checking, we found that all required forms were present.<br>
+                    </div>
+                </li>
+
+                <li>
+
+                    <div class ="upScreening">
+                        <div class="sStatus">Proposal Screening</div>
+                        <div class="sDatetimeS">11/14/2021 10:00 am</div>
+                        &nbsp-&nbsp
+                        <div class="sDatetimeE">11/15/2021 11:00 am</div>
+                    </div>
+
+                    <div class = "sComment">
+                        Your proposal was assigned to a Research Assistant for screening.<br>
+                        Your proposal passed the initial screening.<br>
+                        The Director has signed the screening report.<br>
+                    </div>
+
+                </li>
+            
+                <li>
+                    <div class ="upReview">
+                        <div class="rvStatus">RERC Review</div>
+                        <div class="rvDatetimeS">11/14/2021 10:00 am</div>
+                        &nbsp-&nbsp
+                        <div class="rvDatetimeE">11/15/2021 11:00 am</div>
+                    </div>
+
+                
+                    <div class = "rvComment">
+                        Your proposal was sent to the Research Ethics Review Commitee for review<br>
+                    </div>
+                </li>
+            </ol>
+            
+        </div>
+
+
+
+    </body>
+</html>
+
+<link rel="stylesheet" href="searchresult.css">

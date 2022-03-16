@@ -97,9 +97,8 @@ function search_query(e){
 
 function show_search_results(){
     $(".search-popup").hide();
-
-    
     $(".search-result-wrapper").show();
+
 }
 
 

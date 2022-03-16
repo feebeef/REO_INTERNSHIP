@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="../global/jquery-3.6.0.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet' />
+  <script src="../global/materialize.min.js"></script>
+  <link rel="stylesheet" href="../global/materialize.min.css">
+  <link href='../global/style.css' rel='stylesheet' />
+
+</head>
+
+<body>
+
+  <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#screening-report-modal">Modal</a>
+
+  <a class="waves-effect waves-light btn modal-trigger" href="#screening-pending-modal">Modal</a>
+
+  <!-- Modal Structure -->
+  <div id="screening-report-modal" class="modal modal-fixed-footer" >
+    <div class="modal-content" style="margin-top: 0px">
+      <h5>Application Checklist</h5>
+      <form id="screening-report-form" action="/screening/ongoing/1" method="POST">
+        <strong>FAF.001.2018-2019.T1.RVR-COB</strong>
+        <br>
+        Attitudes Towards Cause-Marketing in Two Emerging Markets-India and Philippines: The Role of Corporate Social
+        Responsibility, Time Orientation and Company Origin
+        <p>
+          <label>
+            <input class="checkbox filled-in" type="checkbox" checked/>
+            <span>Project Description</span>
+          </label>
+        </p> 
+        <p>
+          <label>
+            <input class="checkbox filled-in" type="checkbox" checked/>
+            <span>Full Research Proposal including instruments used</span>
+        </p>
+
+        <p>
+          <label>
+            <input class="checkbox filled-in" type="checkbox" checked/>
+            <span>Informed Consent Form </span>
+          </label>
+        </p>
+
+        <p>
+          <label>
+            <input class="checkbox filled-in" type="checkbox" checked/>
+            <span>Curriculum Vitae</span>
+          </label>
+        </p>
+
+        <p>
+          <label>
+            <input class="checkbox filled-in" type="checkbox" />
+            <span>Guardian or Parental Consent Form</span>
+          </label>
+        </p>
+
+        <p>
+          <label>
+            <input class="checkbox filled-in" type="checkbox" checked/>
+            <span>Accomplished General Research Ethics Checklist</span>
+          </label>
+        </p>
+
+        <p>
+          <label>
+            <input class="checkbox filled-in" type="checkbox" checked />
+            <span>Accomplished specific checklists </span>
+          </label>
+        </p>
+    <label for="screening-report-comments">Comments</label>
+          <textarea id="screening-report-comments" data-length="255" class="materialize-textarea" style=" min-height: 150px;
+          font-size: 15px;"></textarea>
+          <script>$('textarea#screening-report-comments').characterCounter();</script>
+    </div>
+    <div class="modal-footer">
+      <input type="submit" value="Submit" class="modal-close green btn"/>
+    </div>
+  </form>
+  </div>
+</body>
+
+</html>
+
+<script>
+   var elems = document.querySelectorAll('.modal');
+  var instances = M.Modal.init(elems, {opacity: 0.15});
+
+
+  $('select').formSelect();
+    $(".checkbox").change(function(e) {
+        if(!this.checked) {
+          let str = $("#screening-report-comments").val() + e.target.nextElementSibling.innerHTML + ": \n" ;
+          $("#screening-report-comments").val(str) 
+        }else if(this.checked){
+          let str = $("#screening-report-comments").val()
+          str = str.replace( e.target.nextElementSibling.innerHTML + ":", "").trim();
+          $("#screening-report-comments").val(str)
+        }
+    });
+  
+
+
+</script>

@@ -5,10 +5,17 @@ const router = express.Router()
 
 
 // define the home page route
-router.get("/",async(req, res)=>{
-    const result = await query.get_all_screening();
-    console.log(result)
-    res.render('screening', {layout: "fullpage",data: result});
+router.get("/",(req, res)=>{
+    // const total_screening =  await query2.manual_query(`SELECT COUNT(screening_id) AS count FROM screening`).then(data=>{
+    //     return data[0].count;
+    // });
+    // console.log(req.cookies);
+    // console.log(Math.ceil(total_screening/10));
+
+    // if(!req.cookies){
+    //     totalPages = Math.ceil(total_screening/20);
+    res.render('screening', {layout: "fullpage" });
+    //}
 })
 
 function get_due_date(){
@@ -84,8 +91,26 @@ router.post("/",async(req, res)=>{
 })
 
 
-router.put("/",async(req, res)=>{
-    
+
+router.get("/api",async(req, res)=>{
+    const page_num = req.query.page;
+    const row_limit = req.query.row_limit;
+    const status = req.query.status;
+    const result = await query.get_all_screening({status: [status]}, false, false);
+    console.log(result)
+    res.status(200).json(result)
+})
+
+router.post("/:id",async(req, res)=>{
+    const screening_id = req.params.id;
+    const data = req.body;
+  //  const activity_data = req.body.activityData;
+    console.log(screening_id)
+    console.log(data)
+
+    await query2.update_data_fields("screening", screening_id, data.screening);
+    await query2.insert_one_data("screening_activity", data.activity)
+    res.status(200).json("ok")
 })
 
 module.exports = router;

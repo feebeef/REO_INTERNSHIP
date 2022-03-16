@@ -1,0 +1,54 @@
+    <div class="row" style=" height: 42px;">
+                <div class="left" style="border: #C6C2DE 2px solid; width: 96px; border-radius: 8px; " class="btn_filter_outline">
+                  <div style="color: #25213B; padding-left: 8px; padding-right: 2px;" id="btn_filter" class="btn-flat">
+                    <i style="color:#8B83BA; margin-right: 5px; " class="material-icons left">filter_alt</i>
+                    Filter
+                  </div>
+              </div>
+              
+              <div class="col s2 left">
+                  <label class="left" style="line-height: 2px;">Show</label>
+                <select class="row-limit" id="select-row-limit">
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+              </div>
+                <div class="col s3 left">
+                 <label class="left" style="line-height: 2px;">Sort By</label>
+                 <select id ="select-sort-by" >
+                    <option value="2">due date</option>
+                    <option value="3">protocol code</option>
+                    <option value="1">date added</option>
+                    <option value="3">date completed</option>
+                    <option value="3">working days</option>
+                    <option value="3">title</option>
+                </select>
+              </div>
+              <div id="btn_update_status" class="btn right" style="margin-top: 0px;">Update</div> 
+            </div>
+
+            
+        <div class="row" style="background-color: #F4F2FF; height: 84px; padding: 10px; margin-top: 0px;">
+             <div class="col s3">
+                  <label class="left" style="line-height: 2px;">by Category</label>
+                  <select multiple class="" id="filter-category">
+                  </select>
+              </div>
+              <div class="col s3">
+                  <label class="left" style="line-height: 2px;">by College</label>
+                  <select multiple class="" id="filter-college">
+                  </select>
+              </div>
+              <div class="col s3">
+                <label class="left" style="line-height: 2px;">by School Year</label>
+                <select multiple class="" id="filter-schoolyear">
+                </select>
+              </div>
+              <div class="col s3">
+                <label class="left" style="line-height: 2px;">by Phreb Category</label>
+                <select multiple class="" id="filter-phreb">
+                </select>
+              </div>
+        </div>

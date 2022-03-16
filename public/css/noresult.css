@@ -1,0 +1,123 @@
+header{
+    display:flex;
+    justify-content: center;
+    color:#4BD686;
+}
+div.d0{    
+    display:flex;
+    justify-content: center;
+}
+div.d1{
+    font-size:12pt;
+    color:rgb(164, 164, 164);
+    float: left;
+    padding: 10px;
+}
+div.forcenter{
+    display:flex;
+    justify-content: center;
+}
+div.found{
+    float: left;
+    display:flex;
+    justify-content: center;
+
+}
+div.message{
+    margin-top: 150px;
+    width: 120%;
+}
+div.horray{
+    font-size:16pt;
+    color:#FF4A4B;
+    font-weight: bold;
+}
+div.dnum{
+    color:rgb(164, 164, 164);
+}
+div.process{
+    display: grid;
+    place-content: center;
+    padding: 10px;
+}
+
+
+div.upReceived{
+    margin-top: 8px;
+    float: right;
+    display:flex;
+    justify-content: center;
+}
+div.rStatus{
+    font-weight: bold;
+    margin-left: 5px;
+}
+div.rDatetime{
+    color:rgb(164, 164, 164);
+    margin-left: 5px;
+    margin-right: 258px;    /* bruteforce align +64*/
+}
+
+div.upScreening{
+    margin-top: 8px;
+    float: right;
+    display:flex;
+    justify-content: center;
+}
+div.sStatus{
+    font-weight: bold;
+    margin-left: 5px;
+}
+div.sDatetimeS{
+    color:rgb(164, 164, 164);
+    margin-left: 5px;
+}
+div.sDatetimeE{
+    color:rgb(164, 164, 164);
+    margin-left: 5px;
+    margin-right: 64px;    /* bruteforce align +64*/ 
+}
+
+div.upReview{
+    margin-top: 8px;
+    float: right;
+    display:flex;
+    justify-content: center;
+    
+}
+div.rvStatus{
+    font-weight: bold;
+    margin-left: 5px;
+}
+div.rvDatetimeS{
+    color:rgb(164, 164, 164);
+    margin-left: 5px;
+}
+div.rvDatetimeE{
+    color:rgb(164, 164, 164);
+    margin-left: 5px;
+    margin-right: 112px;    /* bruteforce align +64*/ 
+}
+
+div.rComment{
+    margin-left: 64px;
+    margin-bottom: 32px;
+}
+div.sComment{
+    margin-left: 64px;
+    margin-bottom: 32px;
+}
+div.rvComment{
+    margin-left: 64px;
+    margin-bottom: 32px;
+}
+
+.imgs{
+    width: 100%;
+}
+#signout{
+    text-align: right;
+    font-size:12pt;
+    color:rgb(164, 164, 164);
+    margin:10px 30px;
+}

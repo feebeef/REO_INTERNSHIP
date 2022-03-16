@@ -19,7 +19,8 @@ router.post("/screening",async(req, res)=>{
     const activity_name = req.body.activity_name;
     const comments = req.body.comments;
 
-    const result = await query2.insert_one_data("screening_activity", {screening_id: screening_id, 
+    const result = await query2.insert_one_data("screening_activity", 
+        {screening_id: screening_id, 
         activity_name: activity_name,comments: comments });
    res.json(result)
 })

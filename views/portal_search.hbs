@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, height=device-height, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
+    </head>
+    <body>
+        
+
+        <div class="d0">
+            <div class="d1">Track your Document</div>
+            <div class="d1">|</div>
+            <div class="d1">Submit a Proposal</div>
+            <div class="d1">|</div>
+            <div class="d1">Contact Us</div>
+        </div>
+
+        <form action="/portal/search/" method="GET">
+            <div class="imgs">
+               
+                <img
+                src="/images/search-doc.png"
+                style="float: right;  margin-left: 20px; width:25%; margin-top: 40px;"
+                />
+               
+                </span>
+            </div>
+
+          
+              
+                
+               
+
+             <div style="position: absolute; left: 25%; 
+             top: 220px; display: inline-flex; font-size: 16px; max-width: 300px; width: 300px;">
+                 <img
+                src="/images/dlsu-green-logo.PNG"
+                style=" height:64px;
+                 width:64px; margin-top: -45px; margin-right: 15px;"
+                />
+                <div style="margin-top: -40px;">
+                De La Salle University <br>
+                Research Ethics Office <br>
+                <span style="font-size: 14px; color: grey;">Researcher Portal</span><br>
+                <br> <br> 
+                <span style="margin-top: -10px;  margin-left: -64px;
+                color:#219653; font-size: 16px; font-weight: bold;" >
+                    Welcome Lasallians!
+                    <br>
+                </span>
+                 <span style=" position: absolute; font-size: 16px;
+                word-wrap: break-word; white-space:normal; left: 15px; width: 300px;">
+                To see the  status of your proposal, please use 
+                the document id sent to your email
+                </span>
+                </div>
+
+            </div>
+
+            
+
+            <div class="input-box" style="margin-top: -30px;">
+                <i class="fa fa-search"></i>
+                <input id="id" type="text" name="id" placeholder="documentid">
+                
+            </div>
+            
+        </form>
+
+
+    </body>
+</html>
+
+<script>
+    function submitForm(e){
+        alert("submit")
+        const url = "/portal/search/" +  $("#documentid").val();
+        $.get(url, (status,res)=>{
+            console.log(res)
+        })
+    }
+</script>
+
+<link rel="stylesheet" href="/css/search.css">
