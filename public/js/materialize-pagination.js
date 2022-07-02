@@ -239,16 +239,14 @@
 
         util: {
             createPage: function(pageData) {
-                return $('<li>')
+                return $('<li>').addClass('btn-flat').css("background-color", "trasparent")
                     .html('<a>' + pageData + '</a>')
-                    .addClass('waves-effect')
                     .attr('data-page', pageData);
             },
             createChevron: function(type) {
                 var direction = type === 'next' ? 'right' : 'left';
 
                 var $icon = $('<i>')
-                    .addClass('waves-effect')
                     .addClass('material-icons')
                     .text('chevron_' + direction);
 

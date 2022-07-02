@@ -1,4 +1,5 @@
 
+  {{!-- {{#ifEquals data.usertype 1}} --}}
   <!-- Modal Structure -->
   <form id="screening-report-modal" class="modal modal-fixed-footer" >
     <div class="modal-content" style="margin-top: 0px">
@@ -13,11 +14,9 @@
           <select id="screening-report-select" class="browser-default">
             <option value="" disabled selected>Choose your option</option>
             <option value="Full Review">Full Review</option>
-            <option value="Full Board Review">Withdrawn</option>
-            <option value="Exempted">Full Board Review</option>
-            <option value="Withdraw">Exempted</option>
+            <option value="Exempted">Exempted</option>
             <option value="Expedited">Expedited</option>
-            <option value="Humanities Panel Approved">Humanities Panel Approved</option>
+            <option value="Withdraw">Withdrawn</option>
           </select>
       </div>
 
@@ -84,9 +83,6 @@
 
   </form>
 
-
-
-  <script>
-  
-
-  </script>
+  <script src="/js/screeningform.js"> </script>
+{{!-- 
+  {{/ifEquals}} --}}

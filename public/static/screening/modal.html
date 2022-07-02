@@ -83,6 +83,26 @@
     </div>
   </form>
   </div>
+
+  <a class='dropdown-button btn' data-target='dropdown1'>Drop Me!</a>
+
+  <!-- Dropdown Structure -->
+  <div id='dropdown1'  class='dropdown-content'>
+      <div>
+        <input type="checkbox"  class="filled-in"  id="report" />
+        <span for="report">Engagement</span>
+    </div>
+    <div>
+      <input type="checkbox"  id="report3" />
+      <label for="report3">Engagement</label>
+  </div>
+  <div>
+    <input type="checkbox"  id="report4" />
+    <label for="report4">Engagement</label>
+</div>
+</div>
+
+
 </body>
 
 </html>
@@ -90,7 +110,8 @@
 <script>
    var elems = document.querySelectorAll('.modal');
   var instances = M.Modal.init(elems, {opacity: 0.15});
-
+  $('.dropdown-button').dropdown({});
+        
 
   $('select').formSelect();
     $(".checkbox").change(function(e) {

@@ -1,22 +1,25 @@
+<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.runtime.js"></script>
+<script src="/clientside_templates/screening_row.precompiled.js"></script>
 
+{{!-- {{#ifEquals data.usertype 2}} --}}
 <div id="proposal_modal"  class = "modal row"  style="width: 80%;">
   <div class="modal-content card" style="padding-bottom: 20px;" >
       <div class="row">
-          <form class="col s12" autocomplete="off" id="proposal_form">
+          <form class="col s12" autocomplete="off" id="form-group-proposal" method="POST" action = "/screening/proposal">
             <h6>Proposal Description</h6>
             <div class="row">
               <div class="input-field col s4">
-                <input placeholder="category" id="category" type="text" class="validate autocomplete">
-               <label for="category">Category</label>
+                <input placeholder="category" id="form-control-category" name="category" type="text" class="validate autocomplete">
+               <label for="form-control-category">Category</label>
               </div>
       
               <div class="input-field col s4">
-                <input placeholder="AY" id="AY" type="text" class="validate">
-                <label for="AY">School  Year</label>
+                <input placeholder="AY" id="form-control-ay" type="text"name="AY" class="validate">
+                <label for="form-control-ay">School  Year</label>
               </div> 
       
               <div class="input-field col s4">
-                  <select id ="term">
+                  <select id ="form-control-term" name="term">
                     <option value="" disabled selected>TERM</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -26,42 +29,43 @@
               </div>
 
               <div class="input-field col s12">
-                <input placeholder="Study Title" id="title" type="text" class="validate">
-                <label for="title">Study Title</label>
+                <input placeholder="Study Title" id="form-control-title" name="title" type="text" class="validate">
+                <label for="form-control-title">Study Title</label>
              </div>
              <div class="input-field col s12">
-              <input placeholder="PHREB Category" id="phreb" type="text" class="validate autocomplete">
-              <label for="phreb">Phreb Category</label>
+              <input placeholder="PHREB Category" id="form-control-phreb" type="text" name ="phreb" class="validate autocomplete">
+              <label for="form-control-phreb">Phreb Category</label>
             </div>
             </div>
-         
-    
           <h6> Proponents </h6>
          
 
           <div class="row">
-            <div id="proponents_rows">
-              <div class="proponent_row" id = "1">
+            <div id="proponents-rows">
+              <div class="proponent-row" id = "proponent-row-1">
                 <div class="input-field col s4">
-                  <input placeholder="Proponent Name" id="name" type="text" class="validate autocomplete name">
-                  <label for="name">Name</label>
+                  <input placeholder="Proponent Name" id="form-control-name-1" name="name" type="text" 
+                  class="validate autocomplete name">
+                  <label for="form-control-name-1">Name</label>
                 </div>
                 <div class="input-field col s2">
-                  <input placeholder="College" id="college" type="text" class="validate autocomplete college">
-                  <label for="college">College</label>
+                  <input placeholder="College" id="form-control-college-1" type="text" name="college" 
+                  class="validate autocomplete">
+                  <label for="form-control-college-1">College</label>
                 </div>
                 <div class="input-field col s4">
-                  <input placeholder="Proponent Center" id="center" type="text" class="validate autocomplete center">
-                  <label for="center">Center</label>
+                  <input placeholder="Proponent Center" id="form-control-center-1" name="center" type="text" 
+                  class="validate autocomplete">
+                  <label for="form-control-center-1">Center</label>
                 </div> 
                 <div class="col col-btn">
-                <div class="btn-floating flat small red" id="del_1" style="text-align: center;" 
-                onClick="remove_proponent_form(this)" target="1">
-                  <i class="material-icons " >remove</i>
+                <div class="btn-floating flat small red" id="del-proponent-row-1"
+                style="text-align: center;"  onclick=removeProponentProposal(this) >
+                  <i class="material-icons" >remove</i>
                 </div>
               </div>
               </div>
-              <div class="btn-floating flat small green" onclick="add_proponent_form()" style="margin-left: -10px;">
+              <div class="btn-floating flat small green" onclick=addProponentProposal(this) style="margin-left: -10px;">
                 <i class="material-icons">add</i>
               </div> 
             </div>
@@ -69,193 +73,22 @@
           </div>
       
               <div class="input-field col s12">
-                  <input placeholder="Research Assistant" id="ra" type="text" class="validate autocomplete">
+                  <input placeholder="Research Assistant" id="form-control-ra" type="text" name = "ra"
+                   class="validate autocomplete">
                   <label for="ra">Research Assistant</label>
               </div>
-              <div class="btn col s12 green submit" value="submit">Submit</div>
+              <input type="submit" class="btn col s12 green submit" value="submit">
               
-    
           </form>
          </div>
   </div>
 </div>
 
 <script>
-  $('.btn-flat').css("font-family", "Inter");
-  $('.btn-flat').css("font-weight", "bold");
   $('select').formSelect();
-  $("#del_1").hide();
-  $('#proposal_modal').modal();
-  let proponent_row_counter = 1;
-
-Handlebars.registerHelper('get_status',
-function (key) {
-   switch (key) {
-     case 1:
-       return "on-going"
-    case 2:
-       return "pending"
-    case 3:
-       return "completed"
-    case 4:
-       return "overdue"
-    case 0:
-      return "withdrawn"
-     default:
-       return "";
-   }
-});
-
-function get_options(route, el){
-    $.get(route, function(payload, status){
-       // console.log(payload)
-       $(el).autocomplete({
-          data: payload,
-          minLength: 0
-       })
-    })
-  }
-
-get_options("/api/options/category", 'input#category');
-get_options("/api/options/phreb_category", 'input#phreb');
-get_options("/api/options/proponent", 'input#name')
-get_options("/api/options/college", 'input#college');
-get_options("/api/options/center", 'input#center' );
-get_options("/api/options/ra", 'input#ra' );
-get_options("/api/options/ay", 'input#AY' );
-
-
-
-  function get_value(route, el, el2, el3){
-        if(el.val() != "" )
-            $.get(route, function(payload, status){
-            
-                if(payload != null){
-                    if(payload[0].hasOwnProperty('college')){
-                        el2.val(payload[0]["college"]);
-                        el2.addClass("valid")
-                        el2.prop("disabled", true);  
-                    }
-                    if(payload[0].hasOwnProperty('center')){
-                      el3.val(payload[0]["center"]);
-                      el3.addClass("valid");
-                      el3.prop("disabled", true);  
-                    }
-
-                    if(el3 == "" || payload[0]["center"] == null  )
-                        el2.val("none")
-                }
-            
-            })
-  }
-
-  $( 'input#name' ).change(function() {
-         $("#college").prop("disabled", false); $("#center").prop("disabled", false); 
-        get_value("/api/options/proponent?name=" + $(this).val(), $(this), $("#college"), $("#center"))
-  });
-
-  function add_proponent_form() {
-    const proponents = $("#proponents_rows");
-    let proponent =  $("#1").clone(false);
-
-    proponent_row_counter += 1;
-    proponent = proponent.attr("id", proponent_row_counter.toString());
-    const new_del_id = "del_" + proponent_row_counter.toString();
-
-    proponent.children(".input-field").each( (i , el) =>{
-        const type =  $(el).children("input").attr("id");
-        const id = $(el).children("input").attr("id") + "_" + proponent_row_counter;
-        
-        $(el).children("input").val("")
-        $(el).children("input").attr("id", id);
-        $(el).children("input").removeClass("valid");
-        $(el).children("label").attr("for", id);
-    });
-
-    get_options("/api/options/proponent", 'input#name' +"_" + proponent_row_counter );
-    get_options("/api/options/college", 'input#college' +"_" + proponent_row_counter );
-    get_options("/api/options/center", 'input#center' +"_" + proponent_row_counter );
-
-    proponent.children(".col-btn").children("#del_1").attr("id", new_del_id);
-    proponent.children(".col-btn").children("#"+new_del_id).attr("target",  proponent_row_counter.toString());
-    proponents.append(proponent);
-    $("#" + new_del_id).show();
-
-    const x =  'input#name' + '_' + proponent_row_counter.toString();
-    $("#college" +"_" + proponent_row_counter ).prop("disabled", false); 
-    $("#center"  +"_" + proponent_row_counter).prop("disabled", false); 
-   // console.log( $(x))
-    $(x).change(function() {
-            $("#college" +"_" + proponent_row_counter ).prop("disabled", false); 
-            $("#center"  +"_" + proponent_row_counter).prop("disabled", false); 
-            get_value("/api/options/proponent?name=" + $(this).val(), $(this), 
-                      $('#college' +"_" + proponent_row_counter), 
-                      $('#center' +"_" + proponent_row_counter))
-     });
-  }
-  function remove_proponent_form(el) {
-    console.log(el)
-    const target = "#"+ $(el).attr('target');
-    $(target).remove();
-  }
-
-  $('#proposal_form').submit(function () {
-
-      let category = $("#category").val();
-      let ay = $("#AY").val();
-      let term = $("#term").val();
-      let phreb_category = $("#phreb").val();
-      let ra = $("#ra").val();
-      let title = $("#title").val();
-      let proponents = [];
-
-
-      $("#proponents_rows").children(".proponent_row").each( (i, el)=>{
-            const name = $(el).children(".input-field").children(".name").val();
-            const college = $(el).children(".input-field").children(".college").val();
-            const center = $(el).children(".input-field").children(".center").val();
-            proponents.push({name: name, college: college, center: center});
-      });
-
-      const data = { category: category, AY: ay, term: term, 
-                    phreb_category: phreb_category, ra:ra, title:title, 
-                    proponents:proponents }
-
-      //console.log(data)
-     
-      $.post("/screening", data)
-        .done(function(res) {
-            data.ra = $("#ra").val().split("-")[0];
-            Object.assign(data, res)
-            const template = Handlebars.templates.screening_row;
-            $("tbody").append(template(data));
-             M.toast({html: 'Successfully Added to Screening', classes: 'rounded'});
-        })
-        .fail(function(res) {
-            M.toast({html: 'error adding proposal to screening', classes: 'rounded'});
-        })
-        .always(function(res) {
-            M.Modal.getInstance($("#proposal_modal")).close();
-        });
-      return false;
-  });
-
-
-  $( ".submit" ).click(function() {
-    $("#proposal_form > .input-field").find("input[type=text]").each(function(){
-       if(!this.value)
-         $(this).val("none");
-     });
-
-    $(".proponent_row > .input-field").find("input[type=text]").each(function(){
-       if(!this.value)
-         $(this).val("none");
-     });
-
-    $( "#proposal_form" ).submit();
-
-
-  });
-
 </script>
+{{!-- {{/ifEquals}} --}}
+
+
+<script src="/js/proposal.js"> </script>
 

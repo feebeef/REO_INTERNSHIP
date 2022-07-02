@@ -11,8 +11,10 @@ async function manual_query(qs, vals=null){
     return results;
 }
 
+
+
 //filter object = {column_name: [values]}
-//sort object = { asc:["column_name"], desc:["column_name"] }
+//sort object = { column_name: asc }
 
 async function get_all_data(table_name, filter=null, sort=null, page=null){
     let qs = `SELECT * FROM ` + table_name + ` `;
@@ -46,7 +48,7 @@ async function get_all_data(table_name, filter=null, sort=null, page=null){
     }
 
     if(page){
-        qs += ( ` LIMIT ` + page.count + ` ` + page.offset );
+        qs += ( ` LIMIT ` + page.limit + ` ` + page.offset );
     }
     if(filter)
         results = await exec(qs,vals);
@@ -67,6 +69,7 @@ async function get_all_data(table_name, filter=null, sort=null, page=null){
 async function update_data_fields(table_name, id, fields){
     let qs = `UPDATE ` + table_name +  ` SET `
     let vals = []
+    if(!fields) return
     Object.entries( fields ).forEach(([field, value])=>{
         if(qs[qs.length-1]==`?`) qs += `, `;
         qs += ( field + `=` );
@@ -85,7 +88,7 @@ async function insert_one_data(table_name, fields){
     let qs = `INSERT INTO ` + table_name + ` (`;
     let qs2 = `VALUES (`
     let vals = []
-    
+    if(!fields) return
     Object.entries( fields ).forEach(([field, value])=>{
         if(qs[qs.length-1]!=`(`) qs += `,`;
         qs += field;

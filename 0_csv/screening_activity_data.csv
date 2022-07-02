@@ -1,0 +1,303 @@
+screening_activity_id,screening_activity,screening_id,comments,date_completed,overdue,user_id
+1,Recommended Review,1,Expedited,,,0
+2,Recommended Review,2,Expedited,,,0
+3,Recommended Review,3,Expedited,,,0
+4,Recommended Review,4,Expedited,,,0
+5,Recommended Review,5,Exempted,,,0
+6,Withdrawn,6,Withdrawn,,,0
+7,Recommended Review,7,Humanities Panel Approved,,,0
+8,Recommended Review,8,Humanities Panel Approved,,,0
+9,Recommended Review,9,Humanities Panel Approved,,,0
+10,Recommended Review,10,Expedited,,,0
+11,Recommended Review,11,Humanities Panel Approved,,,0
+12,Recommended Review,12,Expedited,,,0
+13,Recommended Review,13,Exempted,,,0
+14,Recommended Review,14,Expedited,,,0
+15,Recommended Review,15,Expedited,,,0
+16,Recommended Review,16,On going,,,0
+17,Recommended Review,17,Expedited,,,0
+18,Withdrawn,18,terminated,,,0
+19,Recommended Review,19,expedited,,,0
+20,Recommended Review,20,Exempted,,,0
+21,Recommended Review,21,Expedited,,,0
+22,Recommended Review,22,Exempted,,,0
+23,Recommended Review,23,expedited,,,0
+24,Recommended Review,24,Expedited,,,0
+25,Recommended Review,25,Exempted,,,0
+26,Recommended Review,26,Expedited (IACUC),,,0
+27,Recommended Review,27,Expedited,,,0
+28,Recommended Review,28,Expedited,,,0
+29,Recommended Review,29,Expedited,,,0
+30,Withdrawn,30,Withdrawn,,,0
+31,Recommended Review,31,Expedited,,,0
+32,Recommended Review,32,Expedited,,,0
+33,Recommended Review,33,Expedited,,,0
+34,Recommended Review,34,Exempted,,,0
+35,Recommended Review,35,Exempted,,,0
+36,Files Added,36,Exempted,,,0
+37,Recommended Review,37,Full Review,,,0
+38,Recommended Review,38,Full Review,,,0
+39,Withdrawn,39,Withdrawn,,,0
+40,Recommended Review,40,Exempted,,,0
+41,Recommended Review,41,Exempted,,,0
+42,Screening Result,42,On going,,,0
+43,Recommended Review,43,Exempted,,,0
+44,Recommended Review,44,Exempted,,,0
+45,Recommended Review,45,Exempted,,,0
+46,Recommended Review,46,Exempted,,,0
+47,Recommended Review,47,Exempted,,,0
+48,Recommended Review,48,Exempted,,,0
+49,Recommended Review,49,Expedited,,,0
+50,Recommended Review,50,Exempted,,,0
+51,Recommended Review,51,Expedited,,,0
+52,Withdrawn,52,Expedited,,,0
+53,Recommended Review,53,Full Review,,,0
+54,Recommended Review,54,Expedited,,,0
+55,Recommended Review,55,Full Review,,,0
+56,Recommended Review,56,Exempted,,,0
+57,Recommended Review,57,Expedited,,,0
+58,Screening Result,58,on going,,,0
+59,Recommended Review,59,Expedited,,,0
+60,Recommended Review,60,Expedited,,,0
+61,Recommended Review,61,Expedited,,,0
+62,Withdrawn,62,Withdrawn,,,0
+63,Recommended Review,63,Expedited,,,0
+64,Files Added,64,Expedited,,,0
+65,Recommended Review,65,Expedited,,,0
+66,Recommended Review,66,Expedited,,,0
+67,Recommended Review,67,Expedited,,,0
+68,Withdrawn,68,Withdrawn,,,0
+69,Recommended Review,69,Expedited,,,0
+70,Recommended Review,70,Expedited,,,0
+71,Recommended Review,71,Exempted,,,0
+72,Recommended Review,72,Expedited,,,0
+73,Recommended Review,73,Exempted,,,0
+74,Recommended Review,74,Exempted,,,0
+75,Recommended Review,75,Exempted,,,0
+76,Recommended Review,76,Exempted,,,0
+77,Recommended Review,77,Expedited,,,0
+78,Recommended Review,78,Expedited,,,0
+79,Recommended Review,79,Expedited,,,0
+80,Recommended Review,80,on going,,,0
+81,Recommended Review,81,Expedited,,,0
+82,Recommended Review,82,Expedited,,,0
+83,Recommended Review,83,Expedited,,,0
+84,Withdrawn,84,on going,,,0
+85,Recommended Review,85,Expedited,,,0
+86,Screening Result,86,on going,,,0
+87,Recommended Review,87,on going,,,0
+88,Recommended Review,88,on going,,,0
+89,Files Added,89,,,,0
+90,Files Added,90,,,,0
+91,Recommended Review,91,,,,0
+92,Recommended Review,92,,,,0
+93,Recommended Review,93,,,,0
+94,Recommended Review,94,,,,0
+95,Files Added,95,,,,0
+96,Recommended Review,96,,,,0
+97,Recommended Review,97,,,,0
+98,Recommended Review,98,,,,0
+99,Recommended Review,99,,,,0
+100,Recommended Review,100,,,,0
+101,Recommended Review,101,,,,0
+102,Recommended Review,102,,,,0
+103,Recommended Review,103,,,,0
+104,Recommended Review,104,,,,0
+105,Recommended Review,105,,,,0
+106,Recommended Review,106,,,,0
+107,Files Added,107,,,,0
+108,Recommended Review,108,Full Board Review,,,0
+109,Files Added,109,,,,0
+110,Recommended Review,110,,,,0
+111,Recommended Review,111,,,,0
+112,Recommended Review,112,,,,0
+113,Recommended Review,113,,,,0
+114,Recommended Review,114,,,,0
+115,Files Added,115,,,,0
+116,Recommended Review,116,,,,0
+117,Recommended Review,117,,,,0
+118,Recommended Review,118,,,,0
+119,Screening Result,119,,,,0
+120,Recommended Review,120,,,,0
+121,Screening Result,121,,,,0
+122,Files Added,122,,,,0
+123,Recommended Review,123,,,,0
+124,Files Added,124,,,,0
+125,Files Added,125,,,,0
+126,Recommended Review,126,,,,0
+127,Files Added,127,,,,0
+128,Files Added,128,,,,0
+129,Recommended Review,129,,,,0
+130,Recommended Review,130,,,,0
+131,Screening Result,131,,,,0
+132,Screening Result,132,,,,0
+133,Screening Result,133,,,,0
+134,Recommended Review,134,Full Board Review,,,0
+135,Files Added,135,,,,0
+136,Recommended Review,136,,,,0
+137,Files Added,137,,,,0
+138,Files Added,138,,,,0
+139,Screening Result,139,,,,0
+140,Screening Result,140,,,,0
+141,Recommended Review,141,,,,0
+142,Files Added,142,,,,0
+143,Files Added,143,,,,0
+144,Files Added,144,,,,0
+145,Files Added,145,,,,0
+146,Files Added,146,,,,0
+147,Recommended Review,147,,,,0
+148,Recommended Review,148,,,,0
+149,Screening Result,149,,,,0
+150,Files Added,150,,,,0
+151,Files Added,151,,,,0
+152,Files Added,152,,,,0
+153,Files Added,153,,,,0
+154,Recommended Review,154,,,,0
+155,Recommended Review,155,,,,0
+156,Recommended Review,156,,,,0
+157,Files Added,157,,,,0
+158,Recommended Review,158,,,,0
+159,Files Added,159,,,,0
+160,Recommended Review,160,,,,0
+161,Recommended Review,161,,,,0
+162,Files Added,162,,,,0
+163,Recommended Review,163,,,,0
+164,Files Added,164,,,,0
+165,Files Added,165,,,,0
+166,Files Added,166,Full Board Review,,,0
+167,Files Added,167,Full Board Review,,,0
+168,Withdrawn,168,,,,0
+169,Recommended Review,169,,,,0
+170,Files Added,170,,,,0
+171,Recommended Review,171,,,,0
+172,Files Added,172,,,,0
+173,Recommended Review,173,,,,0
+174,Files Added,174,,,,0
+175,Screening Result,175,,,,0
+176,Recommended Review,176,,,,0
+177,Screening Result,177,,,,0
+178,Recommended Review,178,,,,0
+179,Files Added,179,Full Board Review,,,0
+180,Recommended Review,180,,,,0
+181,Recommended Review,181,,,,0
+182,Files Added,182,,,,0
+183,Files Added,183,,,,0
+184,Files Added,184,,,,0
+185,Recommended Review,185,,,,0
+186,Recommended Review,186,,,,0
+187,Files Added,187,,,,0
+188,Recommended Review,188,,,,0
+189,Recommended Review,189,,,,0
+190,Files Added,190,,,,0
+191,Files Added,191,,,,0
+192,Files Added,192,,,,0
+193,Screening Result,193,,,,0
+194,Recommended Review,194,,,,0
+195,Recommended Review,195,,,,0
+196,Recommended Review,196,,,,0
+197,Files Added,197,,,,0
+198,Recommended Review,198,,,,0
+199,Files Added,199,,,,0
+200,Files Added,200,,,,0
+201,Files Added,201,,,,0
+202,Screening Result,202,,,,0
+203,Files Added,203,,,,0
+204,Files Added,204,,,,0
+205,Files Added,205,,,,0
+206,Files Added,206,,,,0
+207,Files Added,207,,,,0
+208,Files Added,208,,,,0
+209,Files Added,209,,,,0
+210,Files Added,210,,,,0
+211,Files Added,211,,,,0
+212,Files Added,212,,,,0
+213,Files Added,213,,,,0
+214,Files Added,214,,,,0
+215,Files Added,215,,,,0
+216,Files Added,216,,,,0
+217,Files Added,217,,,,0
+218,Files Added,218,,,,0
+219,Files Added,219,,,,0
+220,Files Added,220,,,,0
+221,Files Added,221,,,,0
+222,Files Added,222,,,,0
+223,Files Added,223,,,,0
+224,Files Added,224,,,,0
+225,Files Added,225,,,,0
+226,Files Added,226,,,,0
+227,Files Added,227,,,,0
+228,Files Added,228,,,,0
+229,Files Added,229,,,,0
+230,Files Added,230,,,,0
+231,Files Added,231,,,,0
+232,Files Added,232,,,,0
+233,Files Added,233,,,,0
+234,Files Added,234,,,,0
+235,Files Added,235,,,,0
+236,Files Added,236,,,,0
+237,Files Added,237,,,,0
+238,Files Added,238,,,,0
+239,Files Added,239,,,,0
+240,Files Added,240,,,,0
+241,Files Added,241,,,,0
+242,Files Added,242,,,,0
+243,Files Added,243,,,,0
+244,Files Added,244,,,,0
+245,Files Added,245,,,,0
+246,Files Added,246,,,,0
+247,Files Added,247,,,,0
+248,Files Added,248,,,,0
+249,Files Added,249,,,,0
+250,Files Added,250,,,,0
+251,Files Added,251,,,,0
+252,Files Added,252,,,,0
+253,Files Added,253,,,,0
+254,Files Added,254,,,,0
+255,Files Added,255,,,,0
+256,Files Added,256,,,,0
+257,Files Added,257,,,,0
+258,Files Added,258,,,,0
+259,Files Added,259,,,,0
+260,Files Added,260,,,,0
+261,Files Added,261,,,,0
+262,Files Added,262,,,,0
+263,Files Added,263,,,,0
+264,Files Added,264,,,,0
+265,Files Added,265,,,,0
+266,Files Added,266,,,,0
+267,Files Added,267,,,,0
+268,Files Added,268,,,,0
+269,Files Added,269,,,,0
+270,Files Added,270,,,,0
+271,Files Added,271,,,,0
+272,Files Added,272,,,,0
+273,Files Added,273,,,,0
+274,Files Added,274,,,,0
+275,Files Added,275,,,,0
+276,Files Added,276,,,,0
+277,Files Added,277,,,,0
+278,Files Added,278,,,,0
+279,Files Added,279,,,,0
+280,Files Added,280,,,,0
+281,Files Added,281,,,,0
+282,Files Added,282,,,,0
+283,Files Added,283,,,,0
+284,Files Added,284,,,,0
+285,Files Added,285,,,,0
+286,Files Added,286,,,,0
+287,Files Added,287,,,,0
+288,Files Added,288,,,,0
+289,Files Added,289,,,,0
+290,Files Added,290,,,,0
+291,Files Added,291,,,,0
+292,Files Added,292,,,,0
+293,Files Added,293,,,,0
+294,Files Added,294,,,,0
+295,Files Added,295,,,,0
+296,Files Added,296,,,,0
+297,Files Added,297,,,,0
+298,Files Added,298,,,,0
+299,Files Added,299,,,,0
+300,Files Added,300,,,,0
+301,Files Added,301,,,,0
+302,Files Added,302,,,,0

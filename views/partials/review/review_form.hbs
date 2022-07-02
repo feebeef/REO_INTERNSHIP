@@ -1,0 +1,31 @@
+<div id="review_modal-1"  class = "modal row"  style="width: 80%;">
+  <div class="modal-content card" style="padding-bottom: 20px;" >
+      <div class="row">
+          <form class="col s12" autocomplete="off" id="form-group-review" method="POST">
+            <h6>Review</h6>
+            <div class="row">
+              <div class="input-field col s6">
+                <input placeholder="Review Type" id ="form-control-review_type" name="review_type" type="text" class="validate">
+                <label for="form-control-review_type">Type of Review</label>
+             </div>
+             <div class="input-field col s6" id="field-meeting_date" style="visibility: hidden;">
+                <input    placeholder="dd-mm-yyyy"  id ="form-control-meeting_date" name="full_review_meeting" 
+                type="date" >
+                <label for="form-control-meeting_date">Date of Meeting</label>
+             </div>
+
+             <div class="input-field col s12">
+              <input placeholder="Primary Reviewer" id="form-control-primary_reviewer" type="text" 
+              name ="primary_reviwer" class="validate autocomplete">
+              <label for="form-control-primary_reviewer">Primary Reviewer</label>
+            </div>
+            <input id ="form-control-review_activity" type="hidden" name="review_activity">
+            </div>
+            <input type="submit" class="btn col s12 green submit" value="submit">
+              
+          </form>
+         </div>
+  </div>
+</div>
+
+<script src="/js/review.js"> </script>

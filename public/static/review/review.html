@@ -1,0 +1,166 @@
+<html>
+    <head>
+      <script src="../global/jquery-3.6.0.js"></script>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet' />
+      <script src="../global/materialize.min.js"></script>
+      <link rel="stylesheet" href="../global/materialize.min.css">
+      <link href='../global/style.css' rel='stylesheet' />
+        <script src="script.js"></script>
+        <link href='style.css' rel='stylesheet' />
+    </head>
+    <body>
+
+<div class="card table-container">
+        <div class="card-content row"><div class="row">
+          <span class="x">Screening</span>
+          <a class="btn-floating btn-small waves-effect waves-light green modal-trigger" href="#modal1" style="margin-top: -10px;" ><i class="material-icons">add</i></a>
+          
+          
+          <div class="row">
+          <div class="btn col s1"  style="margin-top: -5px; margin-left: 100px;">Update</div>   
+          
+          <div class = "col s1" style="border: #C6C2DE 2px solid; width: fit-content; border-radius: 8px; " class="btn_filter_outline">
+              <div style="color: #25213B; padding-left: 0px; padding-right: 2px;" id="btn_filter" class="btn-flat">
+                <i style="color:#8B83BA; margin-right: 5px; " class="material-icons left">filter_alt</i>
+                Filter
+              </div>
+          </div>
+        </div>
+        </div>
+
+            <div id="man">
+          
+
+              <div class=" material-table">
+             
+                <table id="datatable">
+                  <thead >
+                    <tr class = "table-tab row">
+                      <th style = "padding-top: 10px;"></th>
+                      <th style = "padding-top: 10px;"></th>
+                      <th> Proposal </th>
+                      <th class="hide-on-medium-small details">Details</th>
+                      <th class = "status">Status</th>
+                      <th class ="hide-on-medium-small">Recent Activity</th>
+                      <th class="hide-on-small-and-down"></th>
+                      <th class="hide-on-small-and-down"></th>
+                      <th style = "padding-top: 10px;"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="data-row">
+                      <td style=" padding-top: 10px;">
+                          <form id = {{proposal_id}} >
+                          <span>
+                           <label>
+                              <input type="checkbox" class="filled-in checkbox-blue-grey"  />
+                          <span></span>
+                          </label>
+                           </span>
+                          </form>
+                      </td>
+                  <td> <a style="color: #8B83BA;" href="#!"><i class="material-icons">chevron_right</i></a></td>
+                  
+                  <td class="proposal">   
+                       
+                      <div class="test">
+                          <a href="!#" style="padding-top: 0px !important; margin-top: -10px; text-align: start; color: #4A4AFF; font-weight: bold;">
+                              <!-- {{ code }} -->
+                              DLSU-FRP.001.2018-2019.T2.GCOE
+                          </a> <br>
+                          <!-- {{ title}} -->
+                          Attitudes Towards Cause-Marketing in Two Emerging Markets-India and Philippines: The Role of Corporate Social Responsibility, Time Orientation and Company Origin
+                          Attitudes Towards Cause-Marketing in Two Emerging Markets-India and Philippines: The Role of Corporate Social Responsibility, Time Orientation and Company Origin
+                          Attitudes Towards Cause-Marketing in Two Emerging Markets-India and Philippines: The Role of Corporate Social Responsibility, Time Orientation and Company Origin
+                      
+                          <div class="proponent-proposal hide-on-large-medium" >
+                            <br>
+                            <label style="font-size: 10px; color:#6E6893; font-weight: bold;">Proponents </label>
+                            <div><b>Dr. Bernadas</b> (CLA, Electronics and Communications Engineering)</div>
+                            <div><b>Dr. Bernadas</b> (CLA, Electronics and Communications Engineering)</div>
+                            <div><b>Dr. Bernadas</b> (CLA, Electronics and Communications Engineering)</div>
+                            <!-- <div><br>
+                            <b>{{proponent_display}}</b> ({{college}}, {{center}}) 
+                            </div> -->
+                        </div>
+
+                      </div>
+                    
+                     
+                  </td>
+                    <td class="details hide-on-medium-small" >
+                      <!-- <pre>{{category}}</pre>
+                      <pre>AY {{AY}}, T{{term}} </pre>
+                      <pre>{{phreb_category}}</pre>
+                      <pre><label></label>{{proponent}}-{{college}}</label> </pre> -->
+                      <div class="test">
+                          FAF<br>
+                      AY 2019-2020, T2 <br>
+                      Socio-behavioral <br>
+                      <div class = "proponents">
+                      <div><b>Dr. Alma Maria Jennifer Gutierrez </b>(RVRCOB, 
+                          Natural Sciences and Environmental)
+                      </div>
+                      <div>Villagracia (CLA)</div>
+                      <div>proponent-colleg</div>
+                      </div>
+                      </div>
+                    </td>
+                   
+                    <td class = "status" style="width: auto; min-width: 125px; max-width: 120px;">
+                      <div class="status-type on-going">
+                          <span class = "circle on-going"></span>
+                         on-going
+                      </div>
+                      
+                      <div class="due_date">due 15/APR/2019</div>
+
+                      <div class="assigned_ra">
+                          <label style="font-size: 10px; color:#6E6893; font-weight: bold;">Assigned to</label> <br>
+                        <a href = "!#" style="font-weight: bold">Phoebe Chen</a>
+                       
+                      
+                      </div>
+                   
+                    </td>
+                  <td class ="hide-on-medium-small recent_activity" style="width: auto; min-width: 212px; max-width: 300px;">
+                        <div class = "activity">{{activity}}</div>
+                        <p class ="comments">{{comments}}</p>
+                  <td>
+                  <td class="hide-on-medium-small action-row" style="font-size: 12px; align-items: center;">
+                        <a href="!#" class="btn-flat" style="color: #6E6893; text-align: center; font-weight: bold; font-size: 12px; padding-top: 30px;">
+                          View More<i class="material-icons"></i></a>
+                  </td>
+                  <td style="width: 5px;"> <a style="color: #8B83BA;"href="#!"><i class="material-icons">more_vert</i></a></td>
+                    
+                  </form>
+                  </tr>
+
+                  </tbody>
+                </table>
+              
+              <br>
+              <ul class="pagination">
+                <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                <li class="active"><a href="#!">1</a></li>
+                <li class="waves-effect"><a href="#!">2</a></li>
+                <li class="waves-effect"><a href="#!">3</a></li>
+                <li class="waves-effect"><a href="#!">4</a></li>
+                <li class="waves-effect"><a href="#!">5</a></li>
+                <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+              </ul>
+              </div>
+            </div>
+
+    </div>
+
+</div>        
+
+<script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js"></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,101 @@
+<style>
+   .input-field > #screening_search{
+     border: none;
+     outline: none;
+   }
+
+    .input-field >  #screening_search:active,  .input-field >  #screening_search:focus{
+     border: none !important;
+     outline: none !important;
+   }
+</style>
+
+<div class="card table-container "style="margin-top: 80px;">
+    <div class="card-content row " style="height: 100%; overflow-y: hidden;">
+      <div class="row" style="overflow-y: auto; max-height: auto; ">
+        <span class="x">Review</span>
+      </div>
+
+      <div class="material-table">                        
+      
+        <table>
+          <thead>
+            <tr class = "table-header">
+              <th class="left" style="width: 80px;">Action</th>
+              <th class="left" style="width: 200px;">Proposal </th>
+              <th class="hide-on-medium-small details left">Details</th>
+              <th class = "status left" style="width: 120px;"> Status</th>
+              <th class ="hide-on-medium-small">Recent Activity</th>
+            </tr>
+          </thead>
+          </table>
+          <table class="datatable" >
+          <tbody id="review"  style="overflow-y: auto; max-height: 100vh;  height: 70vh;">
+               <tr class="data-row">
+                      <td style=" padding-top: 10px;">
+                          <form id = {{review_id}} >
+                          <span>
+                           <label>
+                              <input type="checkbox" class="filled-in checkbox-blue-grey"  />
+                          <span></span>
+                          </label>
+                           </span>
+                          </form>
+                      </td>
+                  <td> <a style="color: #8B83BA;" href="#!"><i class="material-icons">chevron_right</i></a></td>
+                    <td class="proposal">   
+                      <div class="test" style="overflow-wrap: break-word; word-wrap: break-word;">
+                          <a href="!#" id = "protocol-code-{{review_id}}"
+                          style="padding-top: 0px !important; margin-top: -10px; text-align: start; color: #4A4AFF; font-weight: bold; font-size: 12px;">
+                          {{ protocol_code }}
+                          </a>
+                          <br>
+                          <div id="proposal-title-{{review_id}}">
+                          {{ title}}
+                          </div>
+                          <br>
+                          <div class="proponent-proposal hide-on-large-medium" >
+                            <label style="font-size: 10px; color:#6E6893; font-weight: bold;">Proponents </label>
+                            {{#each proponents}}
+                            <div><b>{{name}}</b> ({{#if college}} {{college}} {{/if}} {{#if center}}, {{center}} {{/if}} )</div>
+                            {{/each}}
+                        </div>
+                      </div>
+                  </td>
+                <td class="details hide-on-medium-small" >
+                    <div class="test">
+                      {{category}}<br>
+                       AY {{AY}}, T{{term}}<br>
+                      {{phreb_category}}<br>
+                      <div class = "proponents">
+                      {{#each proponents}}
+                      <div><b>{{name}}</b> ({{#if college}} {{college}} {{/if}} {{#if center}}, {{center}} {{/if}} )</div>
+                      {{/each}}
+                      </div>
+                    </div>
+                  </td>
+                  <td class = "status" style="width: auto; min-width: 125px; max-width: 120px;">
+                    
+                 
+                    <div class="status-type {{#get_status status}}{{/get_status}}"> 
+                      <span class = "circle  {{#get_status status}}{{/get_status}}"></span>
+                      {{#get_status status}}
+                      {{/get_status}}
+                    </div>
+                  
+                  <td class="hide-on-medium-small action-row" style="font-size: 12px; align-items: center;">
+                        <a href="!#" class="btn-flat" style="color: #6E6893; text-align: center; font-weight: bold; font-size: 12px; padding-top: 30px;">
+                          View More<i class="material-icons"></i></a>
+                  </td>
+                  <td style="width: 5px;"> <a style="color: #8B83BA;"href="#!"><i class="material-icons">more_vert</i></a></td>
+                    
+                  </form>
+                  </tr>
+          </tbody>
+        </table>
+       
+
+      </div>
+    </div>
+</div>
+

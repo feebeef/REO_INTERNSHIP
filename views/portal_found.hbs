@@ -35,11 +35,6 @@
         </style>
     </head>
     <body>
-        
-        <header>
-            <h2>Student Portal</h2>
-        </header>
-
         <div class="d0">
             <div class="d1">Home</div>
             <div class="d1">|</div>
@@ -62,7 +57,7 @@
                     </div>
                     <div>
                         <div class="dnum">{{proposal.protocol_code}} <br>
-                            {{proposal.title}}
+                
                         </div>
                        
                     </div>
@@ -92,8 +87,7 @@
                        <div class="rDatetime">{{proposal.date_received}}</div>
                 </div>
                 <div style="margin-left: 50px;">
-                    <div>{{screening.screening_activity}}</div>
-                    <div>{{screening.comments}}</div>
+                    <div>{{screening.status}}</div>
                   </div>
                 </li>
                 {{/if}}

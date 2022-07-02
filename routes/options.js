@@ -3,12 +3,37 @@ const query = require('../database/simple_query');
 const router = express.Router()
 
 
-router.route('/category').get(async(req, res, next)=>{
-    const result = await await query.get_all_data("options", {"type": ["cat"]})
+router.route('/review').get(async(req, res, next)=>{
+    const result = await await query.get_all_data("options", {"type": ["review"]})
     let vals = {};
     result.forEach(res=>{
         vals[res.display_text] = null;
     })
+    res.json(vals);
+})
+
+router.route('/principal_reviwer').get(async(req, res, next)=>{
+    const result = await query.manual_query("SELECT DISTINCT primary_reviwer FROM reo_db.review ORDER BY primary_reviwer")
+    let vals = {};
+    result.forEach(res=>{
+        vals[res.primary_reviewer] = null;
+    })
+    res.json(vals);
+})
+
+
+
+
+router.route('/category').get(async(req, res, next)=>{
+    const result = await query.get_all_data("options", {"type": ["cat"]})
+    let vals = {};
+    result.forEach(res=>{
+        vals[res.value] = null;
+    })
+
+    console.log("HELLOO")
+    console.log(vals);
+
     res.json(vals);
 })
 
@@ -22,9 +47,9 @@ router.route('/ay').get(async(req, res, next)=>{
 })
 
 router.route('/phreb_category').get(async(req, res, next)=>{
-    const result = await await query.get_all_data("options", {"type": ["phreb"]})
+    const result = await query.get_all_data("options", {"type": ["phreb"]})
     let vals = {};
-    result.forEach(res=>{ vals[res.display_text] = null; })
+    result.forEach(res=>{ vals[res.value] = null; })
     res.json(vals);
 })
 
@@ -32,7 +57,7 @@ router.route('/phreb_category').get(async(req, res, next)=>{
 router.route('/center').get(async(req, res, next)=>{
     const result = await query.get_all_data("options", {"type": ["center"]})
     let vals = {};
-    result.forEach(res=>{ vals[res.display_text] = null; })
+    result.forEach(res=>{ vals[res.value] = null; })
     res.json(vals);
 })
 
@@ -52,7 +77,7 @@ router.route('/proponent').get(async(req, res, next)=>{
 router.route('/college').get(async(req, res, next)=>{
     const result = await query.get_all_data("options", {"type": ["college"]})
     let vals = {};
-    result.forEach(res=>{ vals[res.display_text] = null; })
+    result.forEach(res=>{ vals[res.value] = null; })
     res.json(vals);
 })
 

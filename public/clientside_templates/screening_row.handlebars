@@ -1,5 +1,13 @@
-                <tr id= "data-row-{{screening_id}}" class="data-row">
-                      <td style=" padding-top: 10px;">
+
+    </style>
+                <li >
+                  <table class = "data-table"  style="height: 100px;"  >
+                    <tbody >
+                    <tr id= "data-row-{{screening_id}}"  class="row "
+                    style="padding-left: 2px; align-content:flex-start; display:inline-flexbox;">
+                      
+                      <td style="width: 0px;">
+
                           {{#ifEquals status "1"}}
                           <span><label>
                           <input type="checkbox" class="filled-in checkbox-blue-grey proposal-checkbox" id={{screening_id}} />
@@ -7,28 +15,37 @@
                           </label>
                           </span>
                            {{/ifEquals}}
+                           
+                           
                            {{#ifEquals status "2"}}
                           <span><label>
-                          <input type="checkbox" class="filled-in checkbox-blue-grey proposal-checkbox" id={{screening_id}} />
+                          <input type="checkbox" 
+                          class="filled-in checkbox-blue-grey proposal-checkbox" id={{screening_id}} />
                           <span></span>
                           </label>
                           </span>
                            {{/ifEquals}}
+                  
 
                            {{#ifEquals status "3"}}
-                            <select class="browser-default" style="min-width: 120px">
-                                <option value="" disabled selected>Review Type</option>
-                                <option value="review">Review</option>
-                                <option value="full-board">Full Board</option>
-                                <option value="exempted">Exempted</option>
-                                <option value="expedited">Expedited</option>
-                                <option value="withdrawn">Withdrawn</option>
-                            </select>
+                          <span><label>
+                          <input type="checkbox" class="filled-in checkbox-blue-grey review-checkbox" id={{proposal_id}} />
+                          <span></span>
+                          </label>
+                          </span>
                           {{/ifEquals}}
-                      
+                
                        
                       </td>
-                  <td> <a style="color: #8B83BA;" href="#!"><i class="material-icons">chevron_right</i></a></td>
+                  <td style="width: 20px; height: 60px;" >
+             
+                    <a style="color: #8B83BA;" href="#!" >
+                   
+                    <i class="material-icons collapsible-header"   
+                    style="padding:0px;
+                    margin: 0px; line-height: 0px;  height: 14px; border-bottom: none;">chevron_right</i>
+              
+                    </a></td>
                   
                   <td class="proposal">   
                       <div class="test" style="overflow-wrap: break-word; word-wrap: break-word;">
@@ -65,35 +82,60 @@
                       </div>
                     </div>
                   </td>
-                  <td class = "status" style="width: auto; min-width: 125px; max-width: 120px;">
-                    
+                
+                  <td class = "status"
+                   style="width: 100px !important; min-width: 100px !important; max-width: 100px !important;  
                  
-                    <div class="status-type {{#get_status status}}{{/get_status}}"> 
-                      <span class = "circle  {{#get_status status}}{{/get_status}}"></span>
+                   ">
+                    <div  style="width: 100px !important; min-width: 100px !important; max-width: 100px !important;  " class="status-type {{#get_status status}}{{/get_status}}"> 
+                      <span class = "circle  {{#get_status status}}{{/get_status}}" ></span>
                       {{#get_status status}}
                       {{/get_status}}
                     </div>
-
-
-    
-                    <div class="due_date">due {{due_date}}</div>
-                    <div class="assigned_ra"><label style="font-size: 10px; color:#6E6893; font-weight: bold;">Assigned to</label> <br>
-                      <a href = "!#" style="font-weight: bold">{{ra}}</a>
+                    <div class="due_date" style="width: 100px !important; min-width: 100px !important; max-width: 100px !important;  ">due {{due_date}}</div>
+                      {{!-- {{#ifEquals show "2"}} --}}
+                    <div class="assigned_ra" style="width: 100px !important; min-width: 100px !important; max-width: 100px !important;  "><label 
+                    style="font-size: 10px; color:#6E6893; font-weight: bold;">Assigned to</label> <br>
+                      <a href = "!#" style="font-weight: bold">
+                        {{#if ra}} {{ra}} {{/if }}</a>
                     </div>
+                     {{!-- {{/ifEquals}} --}}
+                     
                   </td>
-                  <td class ="hide-on-medium-small recent_activity" style=" width: 150px; max-width:150px; word-wrap: break-word; 
-                          overflow-y: auto;
-                          white-space:normal; font-size: 13px;">
-                     <div class = "activity">{{screening_activity}}</div>
-                      <p>
-                      {{comments}}</p>
-                  <td>
+                  <td class ="hide-on-medium-small recent_activity" style="width:  380px;
+                                                                           max-width: 380px;
+                                                                           min-width: 380px;
+                                                                          height: 20px; padding-left: 25px;
+                                                                          ">
+                     <div class = "activity recent_activity">{{screening_activity}}</div>
+                      <div class ="comments recent_activity" style="word-wrap: break-word;
+                        font-size: 12px;
+                        overflow-x: hidden;
+                        overflow-wrap: break-word; 
+                        white-space: normal;
+                        width: 260px;
+                        "> <b>{{comments}} </b></div>
 
-                  <td class="hide-on-medium-small action-row" style="font-size: 12px; align-items: center;">
+                          <td class ="utilbtn" style="position:absolute; right: 25px;"> <a style="color: #8B83BA;"href="#!">
+                    <i class="material-icons">more_vert</i></a>
+                    </td>
+
+                    <td style="width: 90px">
+
+                    </td>
+    
+                  </td>
+
+                  {{!-- <td class="hide-on-medium-small action-row" style="font-size: 12px; align-items: center;">
                     <a href="!#" class="btn-flat" style="color: #6E6893; text-align: center; font-weight: bold; font-size: 12px; padding-top: 30px;">
                     View More<i class="material-icons"></i></a>
-                  </td>
-                  <td style="width: 5px;"> <a style="color: #8B83BA;"href="#!"><i class="material-icons">more_vert</i></a></td>
-                  </form>
-            </tr>
-
+                  </td> --}}
+                
+               </tr>
+               </tbody>
+               </table>
+              <div class="collapsible-body"></div>
+            </li>
+           
+           
+  

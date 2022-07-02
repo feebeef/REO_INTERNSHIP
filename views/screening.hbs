@@ -1,8 +1,8 @@
-<script src="/js/materialize-pagination.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.runtime.js"></script>
+
+<script src="/js/materialize-pagination.js"></script><script>
+  
+</script>
 <script src="/clientside_templates/screening_row.precompiled.js"></script>
-<link href= '/css/screening.css'  rel='stylesheet' />
-<script src="/js/screening.js"> </script>
 
 <style>
    .input-field > #screening_search{
@@ -14,58 +14,81 @@
      border: none !important;
      outline: none !important;
    }
+
+   .pagination > li.active {
+    background-color: transparent;
+      color: black
+    }
+
+     .pagination > li.active > a {
+    background-color: transparent;
+      color: black
+    }
+
+    .pagination > li {
+      padding: 0px
+    }
+
+   .pagination a:hover,
+.pagination .active a {
+    background-color: transparent;
+    color: #4A4AFF;
+}
 </style>
 
-<div class="card table-container">
-    <div class="card-content row">
-      <div class="row">
+<div class="card table-container "style="margin-top: 80px;max-width: 1100px;">
+    <div class="card-content row " style="height: 100%; overflow-y: hidden;">
+      <div class="row" style="overflow-y: auto; max-height: auto; ">
         <span class="x">Screening</span>
+        {{!-- {{#ifEquals data.usertype 2}} --}}
         <a class="btn-floating btn-small waves-effect waves-light green modal-trigger" href="#proposal_modal" style="margin-top: -10px;" >
           <i class="material-icons">add</i>
         </a>
+        {{!-- {{/ifEquals}} --}}
       </div>
 
       <div class="card-tabs row" >
-        <ul class="screening-tabs tabs  ">
-          <li class="tab col s2 tb"><a href="#completed-table-content">Completed</a></li>
-          <li class="tab col s2 tb"><a class="active " href="#on-going-table-content">On-going</a></li>
-          <li class="tab col s2 tb" ><a href="#pending-table-content">Pending</a></li>
-          <li class="tab col s2 tb"><a href="#withdrawn-table-content">Withdrawn</a></li>
-          <li class="tab col s2 tb"></li>
-          <li class="tab col s2 tb"></li>
-          <li class="tab col s2 tb"></li>
+        <ul class="screening-tabs tabs ">
+          <li class="tab col s3 tb" ><a href="#completed-table-content">Completed</a></li>
+          <li class="tab col s3 tb"><a class="active " href="#on-going-table-content">On-going</a></li>
+          <li class="tab col s3 tb" ><a href="#pending-table-content">Pending</a></li>
+          <li class="tab col s3 tb"><a href="#withdrawn-table-content">Withdrawn</a></li>
         </ul>
       </div>
       {{> screening/filter}}
 
-      <div class="material-table">                        
-      
+      <div class="material-table" style=" min-height: 450px">                        
           <table>
-          <thead>
+          <thead >
             <tr class = "table-header">
-              <th style = "padding-top: 10px;">Action</th>
-              <th style = "padding-top: 10px;"></th>
-              <th> Proposal </th>
-              <th class="hide-on-medium-small details">Details</th>
-              <th class = "status">Status</th>
+              <th class="left" style="width: 80px;">Action</th>
+              <th class="left" style="width: 220px;">Proposal </th>
+              <th class="hide-on-medium-small details left">Details</th>
+              <th class = "status left" style="width: 120px;"> Status</th>
               <th class ="hide-on-medium-small">Recent Activity</th>
-              <th class="hide-on-small-and-down"></th>
-              <th class="hide-on-small-and-down"></th>
-              <th style = "padding-top: 10px;"></th>
-            </tr>
+             </tr>
           </thead>
-          </table>
-            <table class="datatable" >
-          <tbody id="on-going-table-content"></tbody>
-          <tbody id="completed-table-content"></tbody>
-          <tbody id="pending-table-content"></tbody>
-          <tbody id="withdrawn-table-content"></tbody>
-        </table>
 
+          </table>
+  
+          <ul  id="on-going-table-content" class="collapsible"></ul>
+          <ul id="completed-table-content" class="collapsible"></ul>
+          <ul id="pending-table-content" class="collapsible" ></ul>
+          <ul id="withdrawn-table-content"  class="collapsible"></ul>
+  
+      
+            <div id="pagination"></div>
       </div>
     </div>
 </div>
 
+
+
+<link href= '/css/screening.css'  rel='stylesheet' />
+<script src="/js/screeningtable.js"> </script>
+
+{{> review/review_form }}
 {{> screening/proposal_form }}
 {{> screening/application_checklist}}
+
 

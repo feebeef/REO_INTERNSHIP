@@ -7,10 +7,10 @@
         <a class="secondary-content" style="color: #8B83BA;"href="#!">
             <i class="material-icons">more_vert</i></a>
         <div class="status right" >
-            <div class="status-type {{#get_status status}}{{/get_status}} ">
+            {{!-- <div class="status-type {{#get_status status}}{{/get_status}} ">
                 <span class = "circle {{#get_status status}}{{/get_status}} "></span>
                 {{#get_status status}}{{/get_status}}
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="due_date">{{due_date}}</div>
@@ -22,10 +22,10 @@
         {{ title}}
         <div class="proponent-proposal" >
           <br>
-          <label style="font-size: 10px; color:#6E6893; font-weight: bold;">Proponents </label>
+          {{!-- <label style="font-size: 10px; color:#6E6893; font-weight: bold;">Proponents </label>
           {{#each proponents}}
           <div><b>{{name}}</b> ({{#if college}} {{college}} {{/if}} {{#if center}}, {{center}} {{/if}} )</div>
-          {{/each}}
+          {{/each}} --}}
       </div> 
 </li>
 

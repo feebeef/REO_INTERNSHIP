@@ -1,54 +1,125 @@
+  
     <div class="row" style=" height: 42px;">
-                <div class="left" style="border: #C6C2DE 2px solid; width: 96px; border-radius: 8px; " class="btn_filter_outline">
-                  <div style="color: #25213B; padding-left: 8px; padding-right: 2px;" id="btn_filter" class="btn-flat">
+                
+                <button id="btn-filter" 
+                  class="left" style="border: #C6C2DE 2px solid; width: 96px; border-radius: 8px; " class="btn_filter_outline">
+                  <div style="color: #25213B; padding-left: 8px; padding-right: 2px;" id="btn_filter_" class="btn-flat">
                     <i style="color:#8B83BA; margin-right: 5px; " class="material-icons left">filter_alt</i>
                     Filter
                   </div>
-              </div>
+              </button>
               
               <div class="col s2 left">
                   <label class="left" style="line-height: 2px;">Show</label>
                 <select class="row-limit" id="select-row-limit">
-                  <option value="10">10</option>
-                  <option value="20">20</option>
-                  <option value="50">50</option>
-                  <option value="100">100</option>
+                  <option selected value="10">10</option>
+                  <option value="15">20</option>
+                  <option value="20">50</option>
                 </select>
               </div>
                 <div class="col s3 left">
                  <label class="left" style="line-height: 2px;">Sort By</label>
                  <select id ="select-sort-by" >
-                    <option value="2">due date</option>
-                    <option value="3">protocol code</option>
-                    <option value="1">date added</option>
-                    <option value="3">date completed</option>
-                    <option value="3">working days</option>
-                    <option value="3">title</option>
+                    <option value="due_date-desc">due date</option>
+                    <option value="date_completed-desc">date updated (most recent)</option>
+                    <option value="protocol_code-asc">protocol code</option>
+                    <option value="title-asc">title (A-Z)</option>
+                    <option value="title-desc">title (Z-A)</option>
                 </select>
               </div>
-              <div id="btn_update_status" class="btn right" style="margin-top: 0px;">Update</div> 
-            </div>
 
-            
-        <div class="row" style="background-color: #F4F2FF; height: 84px; padding: 10px; margin-top: 0px;">
-             <div class="col s3">
-                  <label class="left" style="line-height: 2px;">by Category</label>
-                  <select multiple class="" id="filter-category">
-                  </select>
-              </div>
-              <div class="col s3">
-                  <label class="left" style="line-height: 2px;">by College</label>
-                  <select multiple class="" id="filter-college">
-                  </select>
-              </div>
-              <div class="col s3">
-                <label class="left" style="line-height: 2px;">by School Year</label>
-                <select multiple class="" id="filter-schoolyear">
-                </select>
-              </div>
-              <div class="col s3">
-                <label class="left" style="line-height: 2px;">by Phreb Category</label>
-                <select multiple class="" id="filter-phreb">
-                </select>
-              </div>
+              <div id="btn-update-status" class="btn right" style="margin-top: 0px;">Update</div> 
+    </div>
+    <div class = "grow"  id = "screening-filter-popup">
+    <form class="card" id ="form-group-screening-filter" style="border: 1px solid #C6C2DE;">
+        <div class="card-content collection row" style="border: none; padding: 0px;">
+        <div class = "collection-item col s4" style="font-size: 14px; padding: 5px;" >
+             Term
         </div>
+        <div class = "collection-item col s8" style="font-size: 14px; padding: 5px;" >
+            School Year
+        </div>
+       
+            <div class="col s4">
+                <div><label>
+                    <input type="checkbox"  name="term" value = 1 id="filter-term-1" 
+                    class="filter form-control"/>
+                    <span> Term 1</span>
+                </label> </div>
+                <div><label>
+                    <input type="checkbox"  name="term" value = 2 id="filter-term-2"    
+                    class="filter form-control"/>
+                    <span> Term 2</span>
+                </label></div>
+                <label>
+                    <input type="checkbox" name="term" value = 3 id="filter-term-3"    
+                    class="filter form-control"/>
+                    <span> Term 3</span>
+                </label>
+                </span>
+            </div>
+  
+          <div class = "col s8" style="max-height: 75px; overflow-y: auto;"  > 
+            {{#each data.ay}}
+            <div><label>
+                <input class="filter form-control" type="checkbox"  name="AY" value = {{this}} id="filter-ay-{{this}}" />
+                <span >{{this}}</span>
+            </label></div>
+            {{/each}}
+          </div>
+    
+    
+        <div  class = "collection-item col s12" style="font-size: 14px; padding: 5px; " >
+            Category
+        </div>
+        <div class ="col s12 " style="padding: 0px; max-height: 50px; overflow-y: auto;" >
+           {{#each data.cat}}
+            <label class="col s4">
+                <input  class="filter form-control" type="checkbox" name="category" value = {{this}} id="filter-category-{{this}}"/>
+                <span>{{this}}</span>
+            </label>
+            {{/each}}
+        </div>
+
+    <div class = "collection-item col s12"  style="padding: 5px">
+        College
+    </div>
+    <div class ="col s12" style="padding: 0px; max-height: 100px; overflow-y: auto;">
+         {{#each data.college}}
+        <label class="col s4">
+            <input class="filter form-control" type="checkbox" name="college" value = {{this}}  id="filter-college-{{this}}"/>
+            <span>{{this}}</span>
+        </label>
+          {{/each}}
+    </div>
+ 
+    <div class = "collection-item col s12"   style="padding:5px" >
+        PHREB Category
+    </div>
+    <div class ="col s12" style="padding: 0px; max-height: 100px; overflow-y: auto; overflow-x: auto; white-space: normal; word-wrap:break-word; ">
+             {{#each data.phreb}}
+            <label class ="col s6">
+            <input class="filter form-control" type="checkbox"  name="phreb_category" value = "{{this}}" id="filter-phreb_category-{{this}}" s/>
+            <span>{{this}}</span>
+            </label>
+            {{/each}}
+    </div>
+    
+    </div>
+        <div class="card-action">
+            <a href="#" class="black-text" id="btn-apply-filter">Apply</a>
+          <a href="#" class="black-text" id="btn-clear-filter">Clear</a>
+          
+        </div>
+    </form>
+    
+    </div>
+<script>
+
+  $('select').formSelect();
+
+
+
+   
+
+</script>

@@ -12,7 +12,6 @@ router.get("/screening",async(req, res)=>{
    // res.render('screening', {layout: "fullpage",data: result});
    res.json(result)
 })
-
 //add activity to screening id
 router.post("/screening",async(req, res)=>{
     const screening_id = req.query.id;

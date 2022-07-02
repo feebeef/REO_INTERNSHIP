@@ -1,0 +1,214 @@
+        <link href='/css/screening.css' rel='stylesheet' />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+    </style>
+    
+    <div class= "dashboard-container" style="margin-top: 80px; margin-left">
+    <div class="row" style="padding-left: 20px;">
+        <a class=" btn-small">
+        <i class="material-icons left">file_download</i>Summaries</a>
+
+        <a class=" btn-small" onclick=getPhrebReport()>
+            <i class="material-icons left" >
+                file_download</i>
+                Phreb Report
+        </a>
+    
+    </div>
+    <div class="row">
+        
+
+        <div class="col s12 m3">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">{{data.completed}}</span>
+              <p>Completed</p>
+            </div>
+
+          </div>
+        </div>
+        
+        <div class="col s12 m3">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text">
+                <span class="card-title">{{data.ongoing}}</span>
+                <p>On-going</p>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m3">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text">
+                <span class="card-title">{{data.pending}}</span>
+                <p>Waiting Files</p>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m3">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text">
+                <span class="card-title">{{data.withdrawn}}</span>
+                <p>Withdrawn</p>
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m6">
+          <div class="card ">
+            <div class="card-content white-text">
+                <canvas id="myChart" width="100%" ></canvas>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col s12 m6">
+            <div class="card ">
+              <div class="card-content white-text">
+                  <canvas id="myChart2" width="100%"></canvas>
+              </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function getPhrebReport(){
+        $.get("/report").then(data =>{
+
+                //encodeURIComponent(payload)
+                let a = document.createElement('a');
+                a.href  = 'data:attachment/csv,' +  encodeURIComponent(data.csv);
+                a.target = '_blank';
+                a.download = 'phreb.csv'; 
+                document.body.appendChild(a);
+                a.click();
+        })
+    }
+</script>
+
+
+<script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    
+    const DATA_COUNT = 7;
+
+
+
+    college_status_dataset = {
+        labels: ['CED','CCS','CLA','COS','GCOE','OCCS','SDRC', 'Others'],
+        datasets: [{
+         label: 'Completed',
+         data: [3, 8, 3, 4, 5, 6, 7],
+         backgroundColor: '#22aa99',
+         stack: 0
+      }, {
+         label: 'Pending',
+         data: [3, 8, 3, 4, 5, 6, 7],
+         backgroundColor: '#994499',   stack: 0
+      }, {
+         label: 'On-going',
+         data: [3, 8, 3, 4, 5, 6, 7],
+         backgroundColor: '#316395',   stack: 0
+      }, {
+         label: 'Withdrawn',
+         data: [3, 8, 3, 4, 5, 6, 7],
+         backgroundColor: '#b82e2e',    stack: 0
+      }]
+    }
+
+
+    college_dataset = {
+        labels: ['BAGCED','CCS','CLA','COS','GCOE','OCCS','SDRC', 'Others'],
+        datasets: [{
+         label: 'AY 2020-2021',
+         data: [3, 8, 3, 4, 5, 6, 7,3],
+         backgroundColor: [ '#22aa99',  '#316395', '#26aa99', '#85aa99',  '#313295', '#224a99' ,  '#53a639'],
+        },
+        {
+         label: 'AY 2021-2022',
+         data: [3, 8, 3, 4, 5, 6, 7,3],
+         backgroundColor: [ '#22aa99',  '#316395', '#22aa99', '#85aa99',  '#313295', '#224a99' ,  '#53a639'],
+        }
+    
+        ],
+    }
+
+    funding_per_college_dataset = {
+        labels: ['BAGCED','CCS','CLA','COS','GCOE','OCCS','SDRC', 'Others'],
+        datasets: [{
+         label: 'DLSU',
+         data: [3, 8, 3, 4, 5, 6, 7,3],
+         backgroundColor: [ '#22aa99'],
+        },
+        {
+         label: 'EXTERNAL',
+         data: [3, 8, 3, 4, 5, 6, 7,3],
+         backgroundColor: [  '#313295'],
+        },{
+         label: 'Personal',
+         data: [3, 8, 3, 4, 5, 6, 7,3],
+         backgroundColor: [ '#316395', ],
+        }
+        ],
+    }
+
+    ['BAGCED','CCS','CLA','COS','GCOE','OCCS','SDRC', 'Others'],
+    funding_dataset = {
+        labels: ['External','Personal','DLSU'],
+        datasets: [{
+         label: 'AY 2020-2021',
+         data: [3, 8, 3],
+         backgroundColor: [ '#22aa99',  '#316395', '#85aa99'  ],
+        },
+        {
+         label: 'AY 2021-2022',
+         data: [3, 8, 3, ],
+         backgroundColor: [  '#22aa99', '#316395','#85aa99' ],
+        },
+        ],
+    }
+
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: college_dataset.labels,
+            datasets: college_dataset.datasets
+        },
+        backgroundColor: ['#22aa99', ],
+        options: {
+            responsive: true,
+            legend: {
+                position: 'right' // place legend on the right side of chart
+        },
+    //   indexAxis: 'y',
+            scales: {
+                xAxes: [{
+                    stacked: true // this should be set to make the bars stacked
+                }]
+            }
+        }
+    });
+
+    const myChart2 = new Chart( document.getElementById('myChart2').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: funding_dataset.labels,
+            datasets: funding_dataset.datasets
+        },
+        options: {
+            responsive: true,
+            legend: {
+                position: 'right' // place legend on the right side of chart
+        },
+    //   indexAxis: 'y',
+            scales: {
+                xAxes: [{
+                    stacked: true // this should be set to make the bars stacked
+                }]
+            }
+        }
+    });
+    </script>

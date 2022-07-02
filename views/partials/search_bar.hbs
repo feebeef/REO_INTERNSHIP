@@ -2,4 +2,60 @@
      
     
 
-    
+     <li style="padding: 0px;">
+                    <i class="material-icons teal-text" style="display: inline; position: absolute;
+                    right: 140px;">search</i>
+                  
+                    <form id="search-form" class="chips search-field" style="padding: 0px; position: absolute;
+                    right: 180px; top: 6px">
+                        <input id="search-input" placeholder="Search"  style="font-size: 14px"
+                        type="search" class="browser-default search-field"
+                        name="q" value="" autocomplete="off" aria-label="Search box"> 
+                        
+                    </form> 
+
+                    <div class="search-popup" id="search-popup-options">
+                        <div class="search-content">
+                            <label class="search-heading">Options</label>
+                            <ul id = "search-option-list" class="popup-list">
+
+                                <li class="search-option">
+                                    <div><a href ="#" data-href="/search/process">in: </a></div>
+                                </li>
+                                <li class="search-option">
+                                    <div><a data-href="/search/code">code: </a></div>
+                                </li>
+                                <li class="search-option">
+                                    <div><a data-href="/search/title">title: </a></div>
+                                </li>
+                                <li class="search-option">
+                                    <div><a data-href="/search/code">school year: </a></div>
+                                </li>
+                                <li class="search-option">
+                                    <div><a data-href="/search/category">category: </a></div>
+                                </li>
+                                <li class="search-option">
+                                    <div><a data-href="/search/prheb_category">phreb: </a></div>
+                                </li>
+                                <li class="search-option">
+                                    <div><a data-href="/search/due_date">due_date: </a></div>
+                                </li>
+                                <li class="">
+                                    <div><a data-href="/search/date_received">date_received: </a></div>
+                                </li>
+                            </ul>
+
+                            <label class="search-heading">Recent Searches</label>
+                            {{!-- <ul id="search-recent" class="popup-list">
+                                <li class="">
+                                    <div><a href="#">Example 1</a></div>
+                                </li>
+                                <li class="">
+                                    <div><a href="#">Example 2 </a></div>
+                                </li>
+                                <li class="">
+                                    <div><a href="#">Example 3 </a></div>
+                                </li>
+                            </ul> --}}
+                        </div>
+                    </div>
